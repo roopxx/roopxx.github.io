@@ -1,0 +1,53 @@
+name: Rupesh P S
+title: roopxx
+metadescription: Hi and welcome to my personal lil corner of the internet. I hope you enjoy your stay!
+twitter: roopxx
+twitter_url: https://twitter.com/roopxx
+github: roopxx
+github_url: https://github.com/roopxx
+linkedin: rupesh-ps
+linkedin_url: https://www.linkedin.com/in/rupesh-ps/
+domain: roopxx.github.io
+image: /assets/cover.png
+favicon: /assets/favicon/favicon.ico
+url: https://roopxx.github.io
+feed_url: /feed.xml
+include: ["_pages"]
+
+baseurl: ""
+
+use_html_extension: false
+
+open_external_links_in_new_tab: true
+
+permalink: pretty
+relative_permalinks: false
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-feed
+
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+collections:
+  posts:
+    output: true
+    permalink: /blog/:slug
+  now:
+    output: true
+    permalink: /now/:year/:long_month
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "_posts/**/*.md"
+    values:
+      layout: "post"
+
+tag_page_layout: tag
+tag_page_dir: tag
