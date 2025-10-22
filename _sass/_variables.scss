@@ -1,0 +1,618 @@
+:root {
+  --font-content:
+    -apple-system, BlinkMacSystemFont, "Inter", "IBM Plex Sans", Segoe UI,
+    Helvetica, Arial, sans-serif;
+  --font-ui: var(--font-content);
+  --font-mono:
+    ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono",
+    "Roboto Mono", "DejaVu Sans Mono", "Liberation Mono", Menlo, Monaco,
+    "Consolas", "Source Code Pro", monospace;
+  --border-radius: 4px;
+  --font-small: 0.875em;
+  --font-smaller: 0.8em;
+  --wrap-wide: 54em;
+  --wrap-normal: 37em;
+  --heading-weight: 500;
+  --input-width: 20em;
+  --image-radius: 6px;
+  --line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  :root {
+    --wrap-normal: 88vw;
+    --wrap-wide: 100vw;
+    --input-width: 100%;
+    --heading-weight: 600;
+  }
+
+  :root .wide,
+  :root .wider {
+    --border-radius: 0;
+    --image-radius: 0;
+  }
+}
+
+:root {
+  --palette-black: #100f0f;
+  --palette-black-rgb: 16, 15, 15;
+  --palette-paper: #fffcf0;
+  --palette-paper-rgb: 254, 252, 240;
+  --palette-200-rgb: 206, 205, 195;
+  --palette-50: #f2f0e5;
+  --palette-100: #e6e4d9;
+  --palette-150: #dad8ce;
+  --palette-200: #cecdc3;
+  --palette-300: #b7b5ac;
+  --palette-400: #9f9d96;
+  --palette-500: #878580;
+  --palette-600: #6f6e69;
+  --palette-700: #575653;
+  --palette-800: #403e3c;
+  --palette-850: #343331;
+  --palette-900: #282726;
+  --palette-950: #1c1b1a;
+  --palette-red-50: #ffe1d5;
+  --palette-red-100: #ffcabb;
+  --palette-red-150: #fdb2a2;
+  --palette-red-200: #f89a8a;
+  --palette-red-300: #e8705f;
+  --palette-red-400: #d14d41;
+  --palette-red-500: #c03e35;
+  --palette-red-600: #af3029;
+  --palette-red-700: #942822;
+  --palette-red-800: #6c201c;
+  --palette-red-850: #551b18;
+  --palette-red-900: #3e1715;
+  --palette-red-950: #261312;
+  --palette-orange-50: #ffe7ce;
+  --palette-orange-100: #fed3af;
+  --palette-orange-150: #fcc192;
+  --palette-orange-200: #f9ae77;
+  --palette-orange-300: #ec8b49;
+  --palette-orange-400: #da702c;
+  --palette-orange-500: #cb6120;
+  --palette-orange-600: #bc5215;
+  --palette-orange-700: #9d4310;
+  --palette-orange-800: #71320d;
+  --palette-orange-850: #59290d;
+  --palette-orange-900: #40200d;
+  --palette-orange-950: #27180e;
+  --palette-yellow-50: #faeec6;
+  --palette-yellow-100: #f6e2a0;
+  --palette-yellow-150: #f1d67e;
+  --palette-yellow-200: #eccb60;
+  --palette-yellow-300: #dfb431;
+  --palette-yellow-400: #d0a215;
+  --palette-yellow-500: #be9207;
+  --palette-yellow-600: #ad8301;
+  --palette-yellow-700: #8e6b01;
+  --palette-yellow-800: #664d01;
+  --palette-yellow-850: #503d02;
+  --palette-yellow-900: #3a2d04;
+  --palette-yellow-950: #241e08;
+  --palette-green-50: #edeecf;
+  --palette-green-100: #dde2b2;
+  --palette-green-150: #cdd597;
+  --palette-green-200: #bec97e;
+  --palette-green-300: #a0af54;
+  --palette-green-400: #879a39;
+  --palette-green-500: #768d21;
+  --palette-green-600: #66800b;
+  --palette-green-700: #536907;
+  --palette-green-800: #3d4c07;
+  --palette-green-850: #313d07;
+  --palette-green-900: #252d09;
+  --palette-green-950: #1a1e0c;
+  --palette-cyan-50: #ddf1e4;
+  --palette-cyan-100: #bfe8d9;
+  --palette-cyan-150: #a2dece;
+  --palette-cyan-200: #87d3c3;
+  --palette-cyan-300: #5abdac;
+  --palette-cyan-400: #3aa99f;
+  --palette-cyan-500: #2f968d;
+  --palette-cyan-600: #24837b;
+  --palette-cyan-700: #1c6c66;
+  --palette-cyan-800: #164f4a;
+  --palette-cyan-850: #143f3c;
+  --palette-cyan-900: #122f2c;
+  --palette-cyan-950: #101f1d;
+  --palette-blue-50: #e1eceb;
+  --palette-blue-100: #c6dde8;
+  --palette-blue-150: #abcfe2;
+  --palette-blue-200: #92bfdb;
+  --palette-blue-300: #66a0c8;
+  --palette-blue-400: #4385be;
+  --palette-blue-500: #3171b2;
+  --palette-blue-600: #205ea6;
+  --palette-blue-700: #1a4f8c;
+  --palette-blue-800: #163b66;
+  --palette-blue-850: #133051;
+  --palette-blue-900: #12253b;
+  --palette-blue-950: #101a24;
+  --palette-purple-50: #f0eaec;
+  --palette-purple-100: #e2d9e9;
+  --palette-purple-150: #d3cae6;
+  --palette-purple-200: #c4b9e0;
+  --palette-purple-300: #a699d0;
+  --palette-purple-400: #8b7ec8;
+  --palette-purple-500: #735eb5;
+  --palette-purple-600: #5e409d;
+  --palette-purple-700: #4f3685;
+  --palette-purple-800: #3c2a62;
+  --palette-purple-850: #31234e;
+  --palette-purple-900: #261c39;
+  --palette-purple-950: #1a1623;
+  --palette-magenta-50: #fee4e5;
+  --palette-magenta-100: #fccfda;
+  --palette-magenta-150: #f9b9cf;
+  --palette-magenta-200: #f4a4c2;
+  --palette-magenta-300: #e47da8;
+  --palette-magenta-400: #ce5d97;
+  --palette-magenta-500: #b74583;
+  --palette-magenta-600: #a02f6f;
+  --palette-magenta-700: #87285e;
+  --palette-magenta-800: #641f46;
+  --palette-magenta-850: #4f1b39;
+  --palette-magenta-900: #39172b;
+  --palette-magenta-950: #24131d;
+}
+
+//-----------------------------------------------------------------
+
+// 1. (JAN) Default Light Theme (Paper + Cyan)
+//-----------------------------------------------------------------
+:root,
+.theme-light {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-50);
+  --color-tx-normal: var(--palette-black);
+  --color-tx-normal-rgb: var(--palette-black-rgb);
+  --color-tx-muted: var(--palette-600);
+  --color-tx-faint: var(--palette-300);
+  --color-ui-normal: var(--palette-100);
+  --color-ui-hover: var(--palette-150);
+  --color-ui-active: var(--palette-200);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-cyan-600);
+  --color-bg-hover: var(--palette-cyan-50);
+  --color-selection: rgba(187, 220, 206, 0.3);
+
+  // Accent colors
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-600);
+  --color-bl-hover: var(--palette-blue-400);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}
+
+// 2. (FEB) Default Dark Theme (Black + Cyan)
+//-----------------------------------------------------------------
+.theme-dark {
+  --color-bg-primary: var(--palette-black);
+  --color-bg-primary-rgb: var(--palette-black-rgb);
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-950);
+  --color-tx-normal: var(--palette-200);
+  --color-tx-normal-rgb: var(--palette-200-rgb);
+  --color-tx-muted: var(--palette-500);
+  --color-tx-faint: var(--palette-700);
+  --color-ui-normal: var(--palette-900);
+  --color-ui-hover: var(--palette-850);
+  --color-ui-active: var(--palette-800);
+  --color-highlight: var(--palette-yellow-900);
+  --color-action: var(--palette-cyan-400);
+  --color-bg-hover: var(--palette-cyan-950);
+  --color-selection: rgba(30, 95, 91, 0.3);
+
+  // Accent colors
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
+
+// 3. (MAR) Blue Light Theme
+//-----------------------------------------------------------------
+.theme-blue-light {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-blue-50);
+  --color-tx-normal: var(--palette-blue-900);
+  --color-tx-normal-rgb: var(--palette-black-rgb); // Re-use for simplicity
+  --color-tx-muted: var(--palette-blue-700);
+  --color-tx-faint: var(--palette-blue-500);
+  --color-ui-normal: var(--palette-blue-100);
+  --color-ui-hover: var(--palette-blue-150);
+  --color-ui-active: var(--palette-blue-200);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-blue-600);
+  --color-bg-hover: var(--palette-blue-50);
+  --color-selection: rgba(171, 207, 226, 0.3);
+
+  // Accent colors (Light mapping)
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-600);
+  --color-bl-hover: var(--palette-blue-400);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}
+
+// 4. (APR) Blue Dark Theme
+//-----------------------------------------------------------------
+.theme-blue-dark {
+  --color-bg-primary: var(--palette-blue-950);
+  --color-bg-primary-rgb: var(--palette-black-rgb); // Re-use
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-blue-900);
+  --color-tx-normal: var(--palette-blue-100);
+  --color-tx-normal-rgb: var(--palette-200-rgb); // Re-use
+  --color-tx-muted: var(--palette-blue-300);
+  --color-tx-faint: var(--palette-blue-500);
+  --color-ui-normal: var(--palette-blue-850);
+  --color-ui-hover: var(--palette-blue-800);
+  --color-ui-active: var(--palette-blue-700);
+  --color-highlight: var(--palette-yellow-800);
+  --color-action: var(--palette-blue-300);
+  --color-bg-hover: rgba(19, 37, 59, 0.5);
+  --color-selection: rgba(146, 191, 219, 0.3);
+
+  // Accent colors (Dark mapping)
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
+
+// 5. (MAY) Green Light Theme
+//-----------------------------------------------------------------
+.theme-green-light {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-green-50);
+  --color-tx-normal: var(--palette-green-900);
+  --color-tx-normal-rgb: var(--palette-black-rgb);
+  --color-tx-muted: var(--palette-green-700);
+  --color-tx-faint: var(--palette-green-500);
+  --color-ui-normal: var(--palette-green-100);
+  --color-ui-hover: var(--palette-green-150);
+  --color-ui-active: var(--palette-green-200);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-green-600);
+  --color-bg-hover: var(--palette-green-50);
+  --color-selection: rgba(160, 175, 84, 0.3);
+
+  // Accent colors (Light mapping)
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-600);
+  --color-bl-hover: var(--palette-blue-400);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}
+
+// 6. (JUN) Green Dark Theme
+//-----------------------------------------------------------------
+.theme-green-dark {
+  --color-bg-primary: var(--palette-green-950);
+  --color-bg-primary-rgb: var(--palette-black-rgb);
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-green-900);
+  --color-tx-normal: var(--palette-green-100);
+  --color-tx-normal-rgb: var(--palette-200-rgb);
+  --color-tx-muted: var(--palette-green-300);
+  --color-tx-faint: var(--palette-green-500);
+  --color-ui-normal: var(--palette-green-850);
+  --color-ui-hover: var(--palette-green-800);
+  --color-ui-active: var(--palette-green-700);
+  --color-highlight: var(--palette-yellow-800);
+  --color-action: var(--palette-green-300);
+  --color-bg-hover: rgba(37, 45, 9, 0.5);
+  --color-selection: rgba(190, 201, 126, 0.3);
+
+  // Accent colors (Dark mapping)
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
+
+// 7. (JUL) Purple Light Theme
+//-----------------------------------------------------------------
+.theme-purple-light {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-purple-50);
+  --color-tx-normal: var(--palette-purple-900);
+  --color-tx-normal-rgb: var(--palette-black-rgb);
+  --color-tx-muted: var(--palette-purple-700);
+  --color-tx-faint: var(--palette-purple-500);
+  --color-ui-normal: var(--palette-purple-100);
+  --color-ui-hover: var(--palette-purple-150);
+  --color-ui-active: var(--palette-purple-200);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-purple-600);
+  --color-bg-hover: var(--palette-purple-50);
+  --color-selection: rgba(166, 153, 208, 0.3);
+
+  // Accent colors (Light mapping)
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-600);
+  --color-bl-hover: var(--palette-blue-400);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}
+
+// 8. (AUG) Purple Dark Theme
+//-----------------------------------------------------------------
+.theme-purple-dark {
+  --color-bg-primary: var(--palette-purple-950);
+  --color-bg-primary-rgb: var(--palette-black-rgb);
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-purple-900);
+  --color-tx-normal: var(--palette-purple-100);
+  --color-tx-normal-rgb: var(--palette-200-rgb);
+  --color-tx-muted: var(--palette-purple-300);
+  --color-tx-faint: var(--palette-purple-500);
+  --color-ui-normal: var(--palette-purple-850);
+  --color-ui-hover: var(--palette-purple-800);
+  --color-ui-active: var(--palette-purple-700);
+  --color-highlight: var(--palette-yellow-800);
+  --color-action: var(--palette-purple-300);
+  --color-bg-hover: rgba(38, 28, 57, 0.5);
+  --color-selection: rgba(196, 185, 224, 0.3);
+
+  // Accent colors (Dark mapping)
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
+
+// 9. (SEP) Warm Light Theme (Autumn)
+//-----------------------------------------------------------------
+.theme-warm-light {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-orange-50);
+  --color-tx-normal: var(--palette-850);
+  --color-tx-normal-rgb: var(--palette-black-rgb);
+  --color-tx-muted: var(--palette-700);
+  --color-tx-faint: var(--palette-500);
+  --color-ui-normal: var(--palette-100);
+  --color-ui-hover: var(--palette-150);
+  --color-ui-active: var(--palette-200);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-orange-600);
+  --color-bg-hover: var(--palette-orange-50);
+  --color-selection: rgba(236, 139, 73, 0.3);
+
+  // Accent colors (Light mapping)
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-600);
+  --color-bl-hover: var(--palette-blue-400);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}
+
+// 10. (OCT) Warm Dark Theme (Halloween)
+//-----------------------------------------------------------------
+.theme-warm-dark {
+  --color-bg-primary: var(--palette-orange-950);
+  --color-bg-primary-rgb: var(--palette-black-rgb);
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-orange-900);
+  --color-tx-normal: var(--palette-orange-100);
+  --color-tx-normal-rgb: var(--palette-200-rgb);
+  --color-tx-muted: var(--palette-orange-300);
+  --color-tx-faint: var(--palette-orange-500);
+  --color-ui-normal: var(--palette-orange-850);
+  --color-ui-hover: var(--palette-orange-800);
+  --color-ui-active: var(--palette-orange-700);
+  --color-highlight: var(--palette-yellow-800);
+  --color-action: var(--palette-orange-300);
+  --color-bg-hover: rgba(64, 32, 13, 0.5);
+  --color-selection: rgba(249, 174, 119, 0.3);
+
+  // Accent colors (Dark mapping)
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
+
+// 11. (NOV) Magenta Dark Theme (Vibrant)
+//-----------------------------------------------------------------
+.theme-magenta-dark {
+  --color-bg-primary: var(--palette-magenta-950);
+  --color-bg-primary-rgb: var(--palette-black-rgb);
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-magenta-900);
+  --color-tx-normal: var(--palette-magenta-100);
+  --color-tx-normal-rgb: var(--palette-200-rgb);
+  --color-tx-muted: var(--palette-magenta-300);
+  --color-tx-faint: var(--palette-magenta-500);
+  --color-ui-normal: var(--palette-magenta-850);
+  --color-ui-hover: var(--palette-magenta-800);
+  --color-ui-active: var(--palette-magenta-700);
+  --color-highlight: var(--palette-yellow-800);
+  --color-action: var(--palette-magenta-300);
+  --color-bg-hover: rgba(57, 23, 43, 0.5);
+  --color-selection: rgba(228, 125, 168, 0.3);
+
+  // Accent colors (Dark mapping)
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
+
+// 12. (DEC) PaperBlack Theme (High Contrast Light)
+//-----------------------------------------------------------------
+.theme-paperblack {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-100);
+  --color-tx-normal: var(--palette-black);
+  --color-tx-normal-rgb: var(--palette-black-rgb);
+  --color-tx-muted: var(--palette-700);
+  --color-tx-faint: var(--palette-500);
+  --color-ui-normal: var(--palette-150);
+  --color-ui-hover: var(--palette-200);
+  --color-ui-active: var(--palette-300);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-blue-700);
+  --color-bg-hover: var(--palette-blue-50);
+  --color-selection: rgba(171, 207, 226, 0.3);
+
+  // Accent colors (Light mapping)
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-700);
+  --color-bl-hover: var(--palette-blue-500);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}

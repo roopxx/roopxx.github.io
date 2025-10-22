@@ -1,0 +1,206 @@
+<script>
+  var darkModeToggle = document.querySelector("#theme-toggle");
+
+  const monthlyThemePairs = [
+    { light: "theme-light", dark: "theme-dark" },
+    { light: "theme-blue-light", dark: "theme-blue-dark" },
+    { light: "theme-green-light", dark: "theme-green-dark" },
+    { light: "theme-paperblack", dark: "theme-warm-dark" },
+    { light: "theme-purple-light", dark: "theme-purple-dark" },
+    { light: "theme-warm-light", dark: "theme-magenta-dark" },
+    { light: "theme-light", dark: "theme-blue-dark" },
+    { light: "theme-green-light", dark: "theme-dark" },
+    { light: "theme-warm-light", dark: "theme-warm-dark" },
+    { light: "theme-paperblack", dark: "theme-purple-dark" },
+    { light: "theme-blue-light", dark: "theme-magenta-dark" },
+    { light: "theme-purple-light", dark: "theme-green-dark" },
+  ];
+
+  const currentMonth = new Date().getMonth();
+  const currentPair = monthlyThemePairs[currentMonth];
+
+  const allThemeClasses = [
+    "theme-dark",
+    "theme-blue-light",
+    "theme-blue-dark",
+    "theme-green-light",
+    "theme-green-dark",
+    "theme-purple-light",
+    "theme-purple-dark",
+    "theme-warm-light",
+    "theme-warm-dark",
+    "theme-magenta-dark",
+    "theme-paperblack",
+  ];
+
+  function syncGiscusTheme() {
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    if (!giscusFrame) return false;
+
+    let currentTheme;
+    try {
+      currentTheme = localStorage.getItem("theme");
+    } catch (e) {
+      console.warn("Could not read localStorage. Falling back to body class.");
+      currentTheme = document.body.classList.contains(currentPair.dark)
+        ? currentPair.dark
+        : currentPair.light;
+    }
+
+    if (
+      currentTheme !== currentPair.light &&
+      currentTheme !== currentPair.dark
+    ) {
+      currentTheme = currentPair.light;
+    }
+
+    const isDark = currentTheme === currentPair.dark;
+    const giscusTheme = isDark ? "dark" : "light";
+
+    giscusFrame.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: giscusTheme } } },
+      "https://giscus.app",
+    );
+
+    return true;
+  }
+
+  function removeAllThemeClasses() {
+    document.body.classList.remove(...allThemeClasses);
+    document.documentElement.classList.remove(...allThemeClasses);
+  }
+
+  function toggleTheme() {
+    let isCurrentlyDark =
+      document.body.classList.contains(currentPair.dark) ||
+      document.documentElement.classList.contains(currentPair.dark);
+
+    let newTheme;
+    removeAllThemeClasses();
+
+    if (isCurrentlyDark) {
+      newTheme = currentPair.light;
+      if (newTheme !== "theme-light") {
+        document.body.classList.add(newTheme);
+      }
+    } else {
+      newTheme = currentPair.dark;
+      document.body.classList.add(newTheme);
+    }
+
+    updateThemeState(newTheme);
+    syncGiscusTheme();
+  }
+
+  function updateThemeState(theme) {
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (e) {
+      console.warn("Could not write to localStorage for theme setting.");
+    }
+    let isDarkMode = theme === currentPair.dark;
+    if (darkModeToggle) {
+      darkModeToggle.setAttribute("aria-checked", isDarkMode.toString());
+    }
+  }
+
+  function initializeTheme() {
+    let initialTheme = currentPair.light;
+    allThemeClasses.forEach((cls) => {
+      if (document.documentElement.classList.contains(cls)) {
+        initialTheme = cls;
+        document.body.classList.add(cls);
+        document.documentElement.classList.remove(cls);
+      } else if (document.body.classList.contains(cls)) {
+        initialTheme = cls;
+      }
+    });
+
+    let isInitiallyDark = initialTheme === currentPair.dark;
+
+    if (darkModeToggle) {
+      darkModeToggle.setAttribute("aria-checked", isInitiallyDark.toString());
+    }
+
+    try {
+      let savedTheme = localStorage.getItem("theme");
+      if (savedTheme !== currentPair.light && savedTheme !== currentPair.dark) {
+        console.log(
+          "Resetting theme to month's default light theme due to invalid localStorage.",
+        );
+        removeAllThemeClasses();
+        if (currentPair.light !== "theme-light") {
+          document.body.classList.add(currentPair.light);
+        }
+        updateThemeState(currentPair.light);
+      } else if (savedTheme !== initialTheme) {
+        console.log("Correcting body class based on localStorage.");
+        removeAllThemeClasses();
+        if (savedTheme !== "theme-light") {
+          document.body.classList.add(savedTheme);
+        }
+        updateThemeState(savedTheme);
+      }
+    } catch (e) {
+      console.warn("Could not access localStorage to initialize theme.");
+    }
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", toggleTheme);
+  }
+
+  window.addEventListener("keydown", function (e) {
+    if (
+      document.activeElement &&
+      (document.activeElement.tagName === "INPUT" ||
+        document.activeElement.tagName === "TEXTAREA")
+    ) {
+      return;
+    }
+    if ((e.key === "d" || e.key === "D") && !e.ctrlKey && !e.metaKey) {
+      if (darkModeToggle) {
+        toggleTheme();
+      }
+    }
+  });
+
+  window.addEventListener("message", function (event) {
+    if (event.origin !== "https://giscus.app") {
+      return;
+    }
+
+    if (event.data.giscus && event.data.giscus.resizeHeight !== undefined) {
+      syncGiscusTheme();
+    }
+  });
+
+  initializeTheme();
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const article = document.querySelector("article");
+    if (!article) return;
+
+    const headings = article.querySelectorAll("h2, h3, h4, h5, h6");
+
+    headings.forEach((heading) => {
+      if (!heading.id) return;
+
+      const anchor = document.createElement("a");
+      anchor.href = "#" + heading.id;
+      anchor.classList.add("anchor");
+      anchor.innerHTML = "#";
+
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const url =
+          window.location.origin + window.location.pathname + "#" + heading.id;
+        navigator.clipboard.writeText(url);
+        window.location.hash = heading.id;
+      });
+
+      heading.appendChild(anchor);
+    });
+  });
+</script>

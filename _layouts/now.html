@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.querySelector("body").classList.add("theme-dark");
+      }
+    </script>
+
+    {% include nav.html %}
+
+    <main>
+      <div class="wrap">
+        <heading>
+          <h1>What I'm doing now</h1>
+        </heading>
+
+        {% assign sorted_now = site.now | sort: 'date' | reverse %} {% if
+        page.permalink == '/now/' %} {% assign latest_now = sorted_now[0] %} {%
+        assign previous_now = sorted_now[1] %}
+
+        <article>
+          <h2 id="{{ latest_now.title | slugify }}">
+            {{ latest_now.title }}
+            <a href="#{{ latest_now.title | slugify }}" class="anchor">#</a>
+          </h2>
+
+          <p><em>{{ latest_now.date | date: "%B, %Y" }}</em></p>
+
+          {{ latest_now.content }} {% if previous_now %}
+          <hr />
+          <h1 id="previously">Previously</h1>
+          <p>
+            <strong>Previous entry:</strong>
+            <a class="internal-link" href="{{ previous_now.url }}">
+              {{ previous_now.date | date: "%B %Y" }}
+            </a>
+          </p>
+          {% endif %}
+        </article>
+
+        {% else %}
+        <article>
+          <h2 id="{{ page.title | slugify }}">
+            {{ page.title }}
+            <a href="#{{ page.title | slugify }}" class="anchor">#</a>
+          </h2>
+
+          <p><em>{{ page.date | date: "%B, %Y" }}</em></p>
+
+          {{ content }} {% for entry in sorted_now %} {% if entry.url ==
+          page.url %} {% assign current_index = forloop.index0 %} {% assign
+          previous_index = current_index | plus: 1 %} {% assign previous_entry =
+          sorted_now[previous_index] %} {% endif %} {% endfor %} {% if
+          previous_entry %}
+          <hr />
+          <p>
+            <strong>Previous entry:</strong>
+            <a class="internal-link" href="{{ previous_entry.url }}">
+              {{ previous_entry.date | date: "%B %Y" }}
+            </a>
+          </p>
+          {% endif %}
+        </article>
+        {% endif %}
+      </div>
+    </main>
+
+    <footer>{% include contact.html %} {% include footer.html %}</footer>
+
+    {% include script.html %}
+  </body>
+</html>

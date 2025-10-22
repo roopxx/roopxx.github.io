@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.querySelector("body").classList.add("theme-dark");
+      }
+    </script>
+
+    {% include nav.html %}
+
+    <main>
+      <div class="wrap">
+        <heading>
+          <h1>{{ page.title }}</h1>
+        </heading>
+        {{ content }}
+      </div>
+    </main>
+    <footer>{% include contact.html %} {% include footer.html %}</footer>
+
+    {% include script.html %}
+  </body>
+</html>

@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<article>
+  <div style="max-width: 35em">
+    <content> {{ content }} </content>
+  </div>
+</article>
+
+<hr class="mn2 ms2" />
+
+{% assign latest_post = site.posts.last %} {% if latest_post %}
+<p>
+  <a href="{{ site.posts.first.url | relative_url }}" class="muted font-ui"
+    >Latest</a
+  >
+</p>
+<div>
+  <a href="{{ latest_post.url }}" class="plain">
+    <h2>{{ latest_post.title }}</h2>
+    <div class="metadata muted small pb font-ui">
+      <time datetime="{{ latest_post.date | date_to_xmlschema }}">
+        {{ latest_post.date | date: "%B %d, %Y" }}
+      </time>
+      ·
+      <span class="reading-time" title="Estimated read time">
+        {% assign words = latest_post.content | number_of_words %} {% assign
+        minutes = words | divided_by:200 | ceil %} {{ minutes }} minute read
+      </span>
+    </div>
+    <div class="small muted">
+      {{ latest_post.excerpt | escape }} Keep&nbsp;reading&nbsp;→
+    </div>
+  </a>
+</div>
+{% endif %}
+
+<hr class="mn2 ms2" />
+
+<p class="muted font-ui">
+  <a href="/blog" class="muted internal-link">Recent Blog Posts</a>
+</p>
+
+<ul class="list-plain tabular-nums">
+  {% assign posts = site.posts | limit: 3 %} {% for post in posts %}
+  <li>
+    <a href="{{ post.url | relative_url }}" class="internal-link plain">
+      <flex class="align-baseline">
+        <span class="muted ppr flex-shrink small mh nowrap font-ui"
+          >{{ post.date | date: "%Y · %m" }}</span
+        >
+        <u>{{ post.title }}</u>
+      </flex>
+    </a>
+  </li>
+  {% endfor %} {% if site.posts.size > 3 %}
+  <li style="padding-top: 1em">
+    <a href="/blog" class="muted internal-link">View all posts...</a>
+  </li>
+  {% endif %}
+</ul>

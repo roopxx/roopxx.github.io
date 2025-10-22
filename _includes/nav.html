@@ -1,0 +1,24 @@
+<nav class="flex align-center font-ui">
+  <span class="flex-grow">
+    <a class="internal-link plain" href="{{ site.baseurl }}/">
+      {{ site.title }}
+    </a>
+  </span>
+  <span class="flex-shrink ssr">
+    <a href="{{ site.baseurl }}/" class="muted plain">Home</a>
+    <a href="{{ site.baseurl }}/blog" class="muted plain ssl mh">Blog</a>
+    <a href="{{ site.baseurl }}/about" class="muted plain ssl mh">About</a>
+    <a href="{{ site.baseurl }}/now" class="muted plain ssl mh">Now</a>
+  </span>
+  <span
+    id="theme-toggle"
+    title="Toggle dark mode"
+    aria-label="Toggle dark mode"
+    type="button"
+    role="switch"
+    aria-checked="true"
+  >
+    <div class="theme-toggle-slide"></div>
+    <div class="theme-toggle-switch"></div>
+  </span>
+</nav>

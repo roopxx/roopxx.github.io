@@ -1,0 +1,68 @@
+:root,
+.theme-light {
+  --color-bg-primary: var(--palette-paper);
+  --color-bg-primary-rgb: var(--palette-paper-rgb);
+  --color-inverted-rgb: var(--palette-black-rgb);
+  --color-bg-secondary: var(--palette-50);
+  --color-tx-normal: var(--palette-black);
+  --color-tx-normal-rgb: var(--palette-black-rgb);
+  --color-tx-muted: var(--palette-600);
+  --color-tx-faint: var(--palette-300);
+  --color-ui-normal: var(--palette-100);
+  --color-ui-hover: var(--palette-150);
+  --color-ui-active: var(--palette-200);
+  --color-highlight: var(--palette-yellow-100);
+  --color-action: var(--palette-cyan-600);
+  --color-bg-hover: var(--palette-cyan-50);
+  --color-selection: rgba(187, 220, 206, 0.3);
+  --color-re: var(--palette-red-600);
+  --color-re-hover: var(--palette-red-400);
+  --color-or: var(--palette-orange-600);
+  --color-or-hover: var(--palette-orange-400);
+  --color-ye: var(--palette-yellow-600);
+  --color-ye-hover: var(--palette-yellow-400);
+  --color-gr: var(--palette-green-600);
+  --color-gr-hover: var(--palette-green-400);
+  --color-cy: var(--palette-cyan-600);
+  --color-cy-hover: var(--palette-cyan-400);
+  --color-bl: var(--palette-blue-600);
+  --color-bl-hover: var(--palette-blue-400);
+  --color-pu: var(--palette-purple-600);
+  --color-pu-hover: var(--palette-purple-400);
+  --color-ma: var(--palette-magenta-600);
+  --color-ma-hover: var(--palette-magenta-400);
+}
+
+.theme-dark {
+  --color-bg-primary: var(--palette-black);
+  --color-bg-primary-rgb: var(--palette-black-rgb);
+  --color-inverted-rgb: var(--palette-paper-rgb);
+  --color-bg-secondary: var(--palette-950);
+  --color-tx-normal: var(--palette-200);
+  --color-tx-normal-rgb: var(--palette-200-rgb);
+  --color-tx-muted: var(--palette-500);
+  --color-tx-faint: var(--palette-700);
+  --color-ui-normal: var(--palette-900);
+  --color-ui-hover: var(--palette-850);
+  --color-ui-active: var(--palette-800);
+  --color-highlight: var(--palette-yellow-900);
+  --color-action: var(--palette-cyan-400);
+  --color-bg-hover: var(--palette-cyan-950);
+  --color-selection: rgba(30, 95, 91, 0.3);
+  --color-re: var(--palette-red-400);
+  --color-re-hover: var(--palette-red-600);
+  --color-or: var(--palette-orange-400);
+  --color-or-hover: var(--palette-orange-600);
+  --color-ye: var(--palette-yellow-400);
+  --color-ye-hover: var(--palette-yellow-600);
+  --color-gr: var(--palette-green-400);
+  --color-gr-hover: var(--palette-green-600);
+  --color-cy: var(--palette-cyan-400);
+  --color-cy-hover: var(--palette-cyan-600);
+  --color-bl: var(--palette-blue-400);
+  --color-bl-hover: var(--palette-blue-600);
+  --color-pu: var(--palette-purple-400);
+  --color-pu-hover: var(--palette-purple-600);
+  --color-ma: var(--palette-magenta-400);
+  --color-ma-hover: var(--palette-magenta-600);
+}
