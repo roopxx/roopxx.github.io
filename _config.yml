@@ -13,7 +13,7 @@ favicon: /assets/favicon/favicon.ico
 url: https://roopxx.github.io
 feed_url: /feed.xml
 include: ["_pages"]
-
+repository: roopxx/roopxx.github.io
 baseurl: ""
 
 use_html_extension: false
@@ -37,7 +37,7 @@ collections:
     permalink: /blog/:slug
   now:
     output: true
-    permalink: /now/:year/:long_month
+    permalink: /now/:year/:month
 
 defaults:
   - scope:
