@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<div class="wrap">
+  <h1>
+    <a href="/tags" class="muted internal-link"
+      ><span class="muted">Tags</span></a
+    >
+    <span class="faint font-normal">/</span> {{ page.tag | capitalize }}
+  </h1>
+
+  {% assign tagged_posts = site.posts | where_exp:"post", "post.tags contains
+  page.tag" %}
+  <div class="pn1 muted font-ui">
+    <p>
+      {{ tagged_posts | size }} entr{% if tagged_posts.size == 1 %}y{% else
+      %}ies{% endif %} about this tag
+    </p>
+  </div>
+
+  <ul class="list-plain tabular-nums">
+    {% for post in tagged_posts %}
+    <li>
+      <a href="{{ post.url }}" class="internal-link plain">
+        <flex class="align-baseline">
+          <span class="muted ppr flex-shrink small mh nowrap font-ui"
+            >{{ post.date | date: "%Y · %m" }}</span
+          >
+          <u>{{ post.title }}</u>
+        </flex>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

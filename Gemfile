@@ -7,4 +7,3 @@ gem "webrick", "~> 1.7"
 gem 'csv'
 gem 'base64'
 gem 'bigdecimal'
-gem "github-pages", "~> 232", group: :jekyll_plugins

@@ -1,0 +1,14 @@
+---
+layout: default
+title: Tags
+---
+
+<div class="wrap">
+  <h1>Tags</h1>
+  <div class="pn1">
+    {% for tag in page.tags %}
+    <a href="/tag/{{ tag | slugify }}" class="internal-link">{{ tag }}</a
+    >{% unless forloop.last %}<span class="muted">,</span>{% endunless %}
+    {% endfor %}
+  </div>
+</div>
