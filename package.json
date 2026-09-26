@@ -7,6 +7,7 @@
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "check": "bundle exec jekyll build --quiet && RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external",
+    "resume": "bash resume/build.sh",
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "devDependencies": {

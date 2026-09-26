@@ -1,0 +1,128 @@
+---
+layout: default
+---
+{%- assign r = site.data.resume -%}
+{%- assign b = r.basics -%}
+<article class="resume">
+  <header class="resume-head">
+    <h1>{{ b.name }}</h1>
+    {%- if b.label -%}
+      <p class="resume-label">{{ b.label }}</p>
+    {%- endif -%}
+    <p class="meta">
+      {%- if b.email -%}
+        <a href="mailto:{{ b.email }}">{{ b.email }}</a>
+      {%- endif -%}
+      {%- if b.location %}
+        · {{ b.location.country | default: b.location.city -}}
+      {%- endif -%}
+    </p>
+    <p class="meta resume-contact">
+      {%- if b.url -%}
+        <a href="{{ b.url }}" target="_blank" rel="noopener">
+          {{- b.url | replace: 'https://', '' | replace: 'www.', '' -}}
+        </a>
+      {%- endif -%}
+      {%- for p in b.profiles -%}
+        <a href="{{ p.url }}" target="_blank" rel="noopener">
+          {{-
+            p.url
+            | replace: 'https://', ''
+            | replace: 'http://', ''
+            | replace: 'www.', ''
+          -}}
+        </a>
+      {%- endfor -%}
+    </p>
+  </header>
+
+  {%- if b.summary %}
+    <p class="resume-summary">{{ b.summary | strip }}</p>
+  {%- endif -%}
+
+  {%- if r.work and r.work.size > 0 %}
+    <h2>Experience</h2>
+    {%- for job in r.work %}
+      <div class="resume-item">
+        <div class="row-head">
+          <span
+            ><span class="t">{{ job.position }}</span>
+            <span class="muted">— {{ job.name }}</span></span
+          >
+          <span class="meta">
+            {%- include resume-date.html date=job.startDate %} –
+            {% if job.endDate -%}
+              {%- include resume-date.html date=job.endDate -%}
+            {%- else -%}
+              Present
+            {%- endif -%}
+          </span>
+        </div>
+        {%- if job.summary -%}
+          <p class="muted">{{ job.summary | strip }}</p>
+        {%- endif %}
+        {%- if job.highlights %}
+          <ul>
+            {%- for h in job.highlights -%}
+              <li>{{ h | strip }}</li>
+            {%- endfor %}
+          </ul>
+        {%- endif %}
+      </div>
+    {%- endfor %}
+  {%- endif -%}
+
+  {%- if r.education and r.education.size > 0 %}
+    <h2>Education</h2>
+    {%- for e in r.education %}
+      <div class="resume-item">
+        <div class="row-head">
+          <span
+            ><span class="t">{{ e.studyType }} of {{ e.area }}</span>
+            <span class="muted">— {{ e.institution }}</span></span
+          >
+          <span class="meta">
+            {%- include resume-date.html date=e.endDate -%}
+          </span>
+        </div>
+      </div>
+    {%- endfor %}
+  {%- endif -%}
+
+  {%- if r.skills and r.skills.size > 0 %}
+    <h2>Skills</h2>
+    <dl class="focus">
+      {%- for s in r.skills %}
+        <dt>{{ s.name }}</dt>
+        <dd>{{ s.keywords | join: ', ' }}</dd>
+      {%- endfor %}
+    </dl>
+  {%- endif -%}
+
+  {%- if r.certificates and r.certificates.size > 0 %}
+    <h2>Certifications</h2>
+    <ul class="rows">
+      {%- for c in r.certificates %}
+        <li>
+          <div class="row-head">
+            <span class="t">{{ c.name }}</span>
+            <span class="meta">{{ c.issuer }}</span>
+          </div>
+        </li>
+      {%- endfor %}
+    </ul>
+  {%- endif %}
+
+  <p class="meta resume-download">
+    <a
+      href="{{ '/assets/resume.pdf' | relative_url }}"
+      target="_blank"
+      rel="noopener"
+      >Open PDF</a
+    >
+    ·
+    <a href="{{ '/assets/resume.pdf' | relative_url }}" download
+      >Download PDF</a
+    >
+  </p>
+</article>

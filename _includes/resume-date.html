@@ -1,0 +1,14 @@
+{%- comment -%}
+  Formats an ISO `YYYY-MM` date as `Mon YYYY`. Pass it in as `date`.
+  An empty or missing value renders nothing (the caller decides what to print).
+{%- endcomment -%}
+{%- assign d = include.date | default: '' -%}
+{%- if d != '' -%}
+  {%- assign p = d | split: '-' -%}
+  {%- assign idx = p[1] | plus: 0 | minus: 1 -%}
+  {%- assign months = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'
+    | split: ','
+  -%}
+  {{- months[idx] }}
+  {{ p[0] -}}
+{%- endif -%}

@@ -1,0 +1,7 @@
+# resume/check.py gates. Not needed by Typst itself.
+# pdfminer.six — extraction gates. NOT interchangeable with poppler: poppler
+#                silently repairs tracked-out text and cannot see the bug the
+#                gates exist to catch.
+# pypdf        — page count and structure checks.
+pdfminer.six==20250506
+pypdf==5.1.0

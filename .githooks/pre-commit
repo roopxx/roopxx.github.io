@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Pre-commit checks. Installed via `npm install` (package.json "prepare").
-#   1. Prettier   — format staged files, then re-stage them.
-#   2. html-proofer — build the site and validate links / HTML (internal only).
+#   1. Prettier              — format staged files, then re-stage them.
+#   2. Resume                — rebuild assets/resume.pdf if its sources changed.
+#   3. Jekyll + html-proofer — build the site and validate links / HTML.
 # Bypass with: git commit --no-verify
 set -euo pipefail
 
@@ -25,6 +26,20 @@ if [ -n "$STAGED" ]; then
   done <<< "$STAGED"
 fi
 
-# 2. Build and validate the generated HTML.
+# 2. Rebuild the resume PDF when its source changes, so the committed PDF can't
+#    drift from _data/resume.yml.
+RESUME_SRC="$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(_data/resume\.yml|resume/(resume\.typ|fonts/))' || true)"
+if [ -n "$RESUME_SRC" ]; then
+  if command -v typst >/dev/null 2>&1; then
+    bash resume/build.sh
+    git add assets/resume.pdf
+  else
+    echo "pre-commit: resume sources changed but typst is not installed." >&2
+    echo "             install it with: brew install typst" >&2
+    exit 1
+  fi
+fi
+
+# 3. Build and validate the generated HTML.
 bundle exec jekyll build --quiet
 RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external

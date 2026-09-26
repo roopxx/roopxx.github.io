@@ -1,0 +1,83 @@
+# The resume. This file is the source of truth; resume/resume.typ only controls
+# how it looks. Field names follow JSON Resume (https://jsonresume.org/schema)
+# so the content outlives whatever renders it.
+#
+# Dates are ISO `YYYY-MM`. An absent `endDate` means "Present" — do not write
+# display strings like "Sep 2024 - Present" here, the renderer formats them.
+
+basics:
+  name: Rupesh P S
+  label: Full-Stack Software Developer
+  url: https://roopxx.github.io
+  email: rupesh.roopxx@gmail.com
+  location:
+    city: Chennai
+    country: India
+  profiles:
+    - network: GitHub
+      username: roopxx
+      url: https://github.com/roopxx
+    - network: X
+      username: roopxx
+      url: https://x.com/roopxx
+    - network: LinkedIn
+      username: roopxx
+      url: https://www.linkedin.com/in/roopxx/
+  summary: >-
+    Full-stack engineer with a track record of designing, developing, and
+    deploying mission-critical features for a high-concurrency EdTech SaaS
+    learning platform. Expertise in Python, Django, and modern frontend
+    frameworks, with hands-on work across third-party API integrations,
+    AI-powered features, and billing systems.
+
+work:
+  - name: Testpress
+    position: Full-Stack Software Developer
+    startDate: "2024-09"
+    summary: >-
+      End-to-end development of critical features for a large-scale Learning
+      Management System (LMS), improving functionality, user experience, and
+      platform revenue streams.
+    highlights:
+      - >-
+        Led the end-to-end integration of the Stripe payment gateway and built
+        custom automated billing models, expanding platform revenue streams
+        (20% increase in international sales).
+      - >-
+        Developed a conversational AI helpdesk with ChatGPT and Gemini plus an
+        automated Mistral AI OCR document extraction pipeline, improving student
+        engagement and support efficiency (resolving 1,000+ daily queries per
+        client).
+      - >-
+        Engineered Microsoft Teams and Zoom OAuth integrations to automate bulk
+        class scheduling, webhook event tracking, and cloud recording imports
+        (4,000+ automated sessions for clients).
+      - >-
+        Built a modern SSC exam engine in Vue.js with dynamic sectional timers,
+        advanced gap-fill question types, and integrated Desmos calculators,
+        serving 100,000+ candidates for the Veranda Race client.
+      - >-
+        Optimized key API endpoints and migrated heavy data exports to
+        asynchronous Celery tasks, reducing database queries by 40% and
+        improving response times under load.
+
+education:
+  - institution: IGNOU, Delhi
+    studyType: Bachelor
+    area: Computer Science
+    endDate: "2025-12"
+
+skills:
+  - name: Languages
+    keywords: [Python, JavaScript, SQL, HTML, CSS, Java]
+  - name: Frameworks & Libraries
+    keywords:
+      [Django, React, Vue.js, Express.js, Tailwind CSS, Redux, Next.js, Node.js]
+  - name: Databases
+    keywords: [PostgreSQL, MongoDB]
+  - name: Tools & Platforms
+    keywords: [Celery, Git, GitHub, Docker, AWS (S3), Vercel, Figma, Webpack]
+
+certificates:
+  - name: Full Stack JavaScript
+    issuer: The Odin Project
