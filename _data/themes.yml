@@ -1,0 +1,143 @@
+# Single source of truth for colour.
+# `palettes` is emitted as CSS custom properties on html[data-theme="<name>"].
+# `months` maps the current month to a light/dark palette pair. That is the
+# automatic theme: no picker, no per-visit randomness.
+
+palettes:
+  light:
+    {
+      bg: "#fffcf0",
+      bg2: "#f2f0e5",
+      tx: "#100f0f",
+      muted: "#6f6e69",
+      faint: "#b7b5ac",
+      ui: "#e6e4d9",
+      action: "#24837b",
+    }
+  dark:
+    {
+      bg: "#100f0f",
+      bg2: "#1c1b1a",
+      tx: "#cecdc3",
+      muted: "#878580",
+      faint: "#575653",
+      ui: "#282726",
+      action: "#3aa99f",
+    }
+  blue-light:
+    {
+      bg: "#fffcf0",
+      bg2: "#e1eceb",
+      tx: "#12253b",
+      muted: "#1a4f8c",
+      faint: "#abcfe2",
+      ui: "#c6dde8",
+      action: "#205ea6",
+    }
+  blue-dark:
+    {
+      bg: "#101a24",
+      bg2: "#12253b",
+      tx: "#c6dde8",
+      muted: "#66a0c8",
+      faint: "#3171b2",
+      ui: "#133051",
+      action: "#66a0c8",
+    }
+  green-light:
+    {
+      bg: "#fffcf0",
+      bg2: "#edeecf",
+      tx: "#252d09",
+      muted: "#536907",
+      faint: "#cdd597",
+      ui: "#dde2b2",
+      action: "#66800b",
+    }
+  green-dark:
+    {
+      bg: "#1a1e0c",
+      bg2: "#252d09",
+      tx: "#dde2b2",
+      muted: "#a0af54",
+      faint: "#768d21",
+      ui: "#313d07",
+      action: "#a0af54",
+    }
+  purple-light:
+    {
+      bg: "#fffcf0",
+      bg2: "#f0eaec",
+      tx: "#261c39",
+      muted: "#4f3685",
+      faint: "#d3cae6",
+      ui: "#e2d9e9",
+      action: "#5e409d",
+    }
+  purple-dark:
+    {
+      bg: "#1a1623",
+      bg2: "#261c39",
+      tx: "#e2d9e9",
+      muted: "#a699d0",
+      faint: "#735eb5",
+      ui: "#31234e",
+      action: "#a699d0",
+    }
+  warm-light:
+    {
+      bg: "#fffcf0",
+      bg2: "#ffe7ce",
+      tx: "#343331",
+      muted: "#575653",
+      faint: "#dad8ce",
+      ui: "#e6e4d9",
+      action: "#bc5215",
+    }
+  warm-dark:
+    {
+      bg: "#27180e",
+      bg2: "#40200d",
+      tx: "#fed3af",
+      muted: "#ec8b49",
+      faint: "#cb6120",
+      ui: "#59290d",
+      action: "#ec8b49",
+    }
+  magenta-dark:
+    {
+      bg: "#24131d",
+      bg2: "#39172b",
+      tx: "#fccfda",
+      muted: "#e47da8",
+      faint: "#b74583",
+      ui: "#4f1b39",
+      action: "#e47da8",
+    }
+  paperblack:
+    {
+      bg: "#fffcf0",
+      bg2: "#e6e4d9",
+      tx: "#100f0f",
+      muted: "#575653",
+      faint: "#b7b5ac",
+      ui: "#cecdc3",
+      action: "#1a4f8c",
+    }
+
+default_light: light
+default_dark: dark
+
+months:
+  - { month: 1, light: light, dark: dark }
+  - { month: 2, light: blue-light, dark: blue-dark }
+  - { month: 3, light: green-light, dark: green-dark }
+  - { month: 4, light: paperblack, dark: warm-dark }
+  - { month: 5, light: purple-light, dark: purple-dark }
+  - { month: 6, light: warm-light, dark: magenta-dark }
+  - { month: 7, light: light, dark: blue-dark }
+  - { month: 8, light: green-light, dark: dark }
+  - { month: 9, light: warm-light, dark: warm-dark }
+  - { month: 10, light: paperblack, dark: purple-dark }
+  - { month: 11, light: blue-light, dark: magenta-dark }
+  - { month: 12, light: purple-light, dark: green-dark }

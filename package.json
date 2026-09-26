@@ -1,0 +1,16 @@
+{
+  "name": "roopxx.github.io",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dev tooling only — the site is built by Jekyll. See CONTENT.md.",
+  "scripts": {
+    "format": "prettier --write --ignore-unknown .",
+    "format:check": "prettier --check --ignore-unknown .",
+    "check": "bundle exec jekyll build --quiet && RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external",
+    "prepare": "git config core.hooksPath .githooks || true"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "1.11.1",
+    "prettier": "3.6.2"
+  }
+}

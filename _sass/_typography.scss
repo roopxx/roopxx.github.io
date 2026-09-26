@@ -1,73 +1,43 @@
-small,
-.small {
-  font-size: var(--font-small);
-  line-height: 1.4;
-}
-
-.smaller {
-  font-size: var(--font-smaller);
-  line-height: 1.4;
-}
-
-.font-ui {
-  font-family: var(--font-ui);
-}
-
-.font-content {
-  font-family: var(--font-content);
-}
-
-.font-mono {
+.meta,
+.label {
   font-family: var(--font-mono);
 }
 
-mark {
-  background-color: var(--color-highlight);
-  color: var(--color-tx-normal);
+.meta {
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.label {
+  display: block;
+  margin: 2.6rem 0 0.8rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lead {
+  font-size: 1.06rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.faint {
+  color: var(--faint);
+}
+
+.plain {
+  text-decoration: none;
+}
+
+.t {
+  font-weight: 600;
 }
 
 .nowrap {
   white-space: nowrap;
-}
-
-.font-normal {
-  font-weight: 400;
-}
-
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
-
-.line-height-loose {
-  line-height: 1.6;
-}
-
-.line-height-tight {
-  line-height: 1.3;
-}
-
-.wrap {
-  max-width: var(--wrap-normal);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.muted {
-  color: var(--color-tx-muted);
-}
-
-.muted a {
-  color: var(--color-tx-muted);
-}
-
-.faint {
-  color: var(--color-tx-faint);
-}
-
-.action {
-  color: var(--color-action);
-}
-
-.font-medium {
-  font-weight: 500;
 }

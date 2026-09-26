@@ -1,27 +1,33 @@
 name: Rupesh P S
-title: roopxx
-metadescription: Hi and welcome to my personal lil corner of the internet. I hope you enjoy your stay!
+title: Rupesh P S
+tagline: Full-stack software developer
+metadescription: >-
+  Rupesh P S is a full-stack software developer in Chennai, India. Notes,
+  weekly logs, and write-ups from building software.
+
+email: rupesh.roopxx@gmail.com
 twitter: roopxx
 twitter_url: https://twitter.com/roopxx
-github: roopxx
-github_url: https://github.com/roopxx
+github: rupesh-ps
+github_url: https://github.com/rupesh-ps
 linkedin: rupesh-ps
 linkedin_url: https://www.linkedin.com/in/rupesh-ps/
+resume_drive: https://drive.google.com/file/d/13WOief-4IX4SFRbweYmWyjGIHAYT7KAW/view?usp=sharing
+resume_updated: 2025-09-01
+
 domain: roopxx.github.io
+url: https://roopxx.github.io
+baseurl: ""
+repository: roopxx/roopxx.github.io
 image: /assets/cover.png
 favicon: /assets/favicon/favicon.ico
-url: https://roopxx.github.io
 feed_url: /feed.xml
-include: ["_pages"]
-repository: roopxx/roopxx.github.io
-baseurl: ""
-
-use_html_extension: false
-
-open_external_links_in_new_tab: true
 
 permalink: pretty
-relative_permalinks: false
+
+include: ["_pages"]
+exclude:
+  ["CONTENT.md", "README.md", "Gemfile", "Gemfile.lock", "vendor", ".github"]
 
 plugins:
   - jekyll-redirect-from
@@ -34,20 +40,45 @@ sass:
 collections:
   posts:
     output: true
-    permalink: /blog/:slug
+    permalink: /notes/:slug/
+  weekly:
+    output: true
+    permalink: /weekly/:year/:month/:day/
+  work:
+    output: true
+    permalink: /work/:slug/
+  reading:
+    output: true
+    permalink: /reading/:slug/
   now:
     output: true
-    permalink: /now/:year/:month
+    permalink: /now/:year/:month/
 
 defaults:
   - scope:
       path: ""
     values:
-      layout: "default"
+      layout: page
   - scope:
       path: "_posts/**/*.md"
     values:
-      layout: "post"
+      layout: post
+  - scope:
+      path: "_weekly/**/*.md"
+    values:
+      layout: page
+  - scope:
+      path: "_work/**/*.md"
+    values:
+      layout: page
+  - scope:
+      path: "_reading/**/*.md"
+    values:
+      layout: page
+  - scope:
+      path: "_now/**/*.md"
+    values:
+      layout: now
 
 tag_page_layout: tag
 tag_page_dir: tag

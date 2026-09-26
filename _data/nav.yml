@@ -1,0 +1,13 @@
+# Primary navigation. "Home" is intentionally omitted; the site name links home.
+- title: Work
+  url: /work/
+- title: Weekly
+  url: /weekly/
+- title: Notes
+  url: /notes/
+- title: Reading
+  url: /reading/
+- title: Now
+  url: /now/
+- title: About
+  url: /about/

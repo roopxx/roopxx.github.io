@@ -1,0 +1,61 @@
+<style>
+    :root {
+      --bg: {{ site.data.themes.palettes[site.data.themes.default_light].bg }};
+      --bg2: {{ site.data.themes.palettes[site.data.themes.default_light].bg2 }};
+      --tx: {{ site.data.themes.palettes[site.data.themes.default_light].tx }};
+      --muted: {{ site.data.themes.palettes[site.data.themes.default_light].muted }};
+      --faint: {{ site.data.themes.palettes[site.data.themes.default_light].faint }};
+      --ui: {{ site.data.themes.palettes[site.data.themes.default_light].ui }};
+      --action: {{ site.data.themes.palettes[site.data.themes.default_light].action }};
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: {{ site.data.themes.palettes[site.data.themes.default_dark].bg }};
+        --bg2: {{ site.data.themes.palettes[site.data.themes.default_dark].bg2 }};
+        --tx: {{ site.data.themes.palettes[site.data.themes.default_dark].tx }};
+        --muted: {{ site.data.themes.palettes[site.data.themes.default_dark].muted }};
+        --faint: {{ site.data.themes.palettes[site.data.themes.default_dark].faint }};
+        --ui: {{ site.data.themes.palettes[site.data.themes.default_dark].ui }};
+        --action: {{ site.data.themes.palettes[site.data.themes.default_dark].action }};
+      }
+    }
+  {% for palette in site.data.themes.palettes %}
+    html[data-theme="{{ palette[0] }}"] {
+      --bg: {{ palette[1].bg }};
+      --bg2: {{ palette[1].bg2 }};
+      --tx: {{ palette[1].tx }};
+      --muted: {{ palette[1].muted }};
+      --faint: {{ palette[1].faint }};
+      --ui: {{ palette[1].ui }};
+      --action: {{ palette[1].action }};
+    }
+  {% endfor %}
+</style>
+<script>
+  window.__themes = {{ site.data.themes | jsonify }};
+</script>
+<script>
+  /* Apply this month's palette before first paint. No flash of the wrong theme. */
+  (function () {
+    var themes = window.__themes;
+    var month = new Date().getMonth() + 1;
+    var pair =
+      themes.months.filter(function (m) {
+        return m.month === month;
+      })[0] || themes.months[0];
+    var saved = null;
+    try {
+      saved = localStorage.getItem('theme:' + month);
+    } catch (e) {}
+    var prefersDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme =
+      saved === pair.light || saved === pair.dark
+        ? saved
+        : prefersDark
+          ? pair.dark
+          : pair.light;
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>

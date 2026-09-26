@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Pre-commit checks. Installed via `npm install` (package.json "prepare").
+#   1. Prettier   — format staged files, then re-stage them.
+#   2. html-proofer — build the site and validate links / HTML (internal only).
+# Bypass with: git commit --no-verify
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+# 1. Format only what is staged.
+PATTERN='\.(md|markdown|html|liquid|scss|css|json|yml|yaml|js|ts)$'
+STAGED="$(git diff --cached --name-only --diff-filter=ACM | grep -E "$PATTERN" || true)"
+
+if [ -n "$STAGED" ]; then
+  PRETTIER="node_modules/.bin/prettier"
+  if [ ! -x "$PRETTIER" ]; then
+    echo "pre-commit: Prettier is not installed. Run: npm install" >&2
+    exit 1
+  fi
+  while IFS= read -r file; do
+    [ -n "$file" ] || continue
+    [ -f "$file" ] || continue
+    "$PRETTIER" --write --ignore-unknown -- "$file"
+    git add -- "$file"
+  done <<< "$STAGED"
+fi
+
+# 2. Build and validate the generated HTML.
+bundle exec jekyll build --quiet
+RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external

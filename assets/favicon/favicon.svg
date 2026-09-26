@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img">
+  <title>Rupesh P S</title>
+  <style>
+    :root { --c: #100f0f; }
+    @media (prefers-color-scheme: dark) { :root { --c: #cecdc3; } }
+  </style>
+  <g transform="translate(4.34 10.88) scale(0.82)" fill="none" stroke="var(--c)" stroke-width="4" stroke-linecap="round">
+    <circle cx="13" cy="16" r="10.5" />
+    <circle cx="35" cy="16" r="10.5" />
+    <circle cx="16.5" cy="16" r="3.6" fill="var(--c)" stroke="none" />
+    <circle cx="38.5" cy="16" r="3.6" fill="var(--c)" stroke="none" />
+  </g>
+</svg>

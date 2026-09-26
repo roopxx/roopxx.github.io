@@ -1,236 +1,87 @@
 code,
-kbd {
+kbd,
+samp {
+  padding: 0.08em 0.3em;
   font-family: var(--font-mono);
-  background: var(--color-bg-secondary);
-  padding: 0.1em 0.2em;
-  border-radius: 4px;
-  font-size: 90%;
-}
-
-kbd {
-  font-weight: 600;
-  border: 1px solid var(--color-ui-hover);
+  font-size: 0.88em;
+  background: var(--bg2);
+  border-radius: 3px;
 }
 
 pre {
-  font-family: var(--font-mono);
-  border-radius: 4px;
-  padding: 1em;
-  font-size: 90%;
-  border: 1px solid var(--color-ui-normal);
-  white-space: pre-wrap;
+  margin: 1.1rem 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  background: var(--bg2);
+  border: 1px solid var(--ui);
+  border-radius: var(--radius);
 }
 
 pre code {
-  background-color: transparent;
+  padding: 0;
+  font-size: 1em;
+  background: none;
 }
 
 div.highlight {
-  display: grid;
+  margin: 1.1rem 0;
 }
 
-.highlight {
-  border-radius: 4px;
-  overflow: auto;
-  margin: 1em 0;
-}
-
-.highlight .c {
-  color: var(--color-tx-faint);
-}
-
-.highlight .err {
-  color: var(--color-re);
-}
-
-.highlight .k {
-  color: var(--color-gr);
-}
-
-.highlight .p {
-  color: var(--color-tx-muted);
-}
-
-.highlight .cm {
-  color: var(--color-tx-faint);
-}
-
-.highlight .cp {
-  color: var(--color-tx-faint);
-}
-
-.highlight .c1 {
-  color: var(--color-tx-faint);
-}
-
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cp,
 .highlight .cs {
-  color: var(--color-tx-faint);
+  color: var(--faint);
 }
 
-.highlight .ge {
-  font-style: italic;
-}
-
-.highlight .gr {
-  color: var(--color-re);
-}
-
-.highlight .gh {
-  color: var(--color-tx-faint);
-}
-
-.highlight .go {
-  color: var(--color-tx-muted);
-}
-
-.highlight .gp {
-  color: var(--color-tx-muted);
-}
-
-.highlight .gu {
-  color: var(--color-tx-muted);
-}
-
-.highlight .gt {
-  color: var(--color-re);
-}
-
-.highlight .kc {
-  color: var(--color-bl);
-}
-
-.highlight .kd {
-  color: var(--color-bl);
-}
-
-.highlight .kp {
-  color: var(--color-bl);
-}
-
-.highlight .kr {
-  color: var(--color-bl);
-}
-
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
 .highlight .kt {
-  color: var(--color-bl);
+  color: var(--action);
 }
 
-.highlight .m {
-  color: var(--color-pu);
-}
-
-.highlight .s {
-  color: var(--color-gr);
-}
-
-.highlight .na {
-  color: var(--color-or);
-}
-
-.highlight .nb {
-  color: var(--color-gr);
-}
-
-.highlight .nc {
-  color: var(--color-bl);
-}
-
-.highlight .no {
-  color: var(--color-cy);
-}
-
-.highlight .nn {
-  color: var(--color-tx-muted);
-}
-
-.highlight .nv {
-  color: var(--color-cy);
-}
-
-.highlight .o {
-  color: var(--color-re);
-}
-
-.highlight .w {
-  color: var(--color-tx-faint);
-}
-
-.highlight .mf {
-  color: var(--color-pu);
-}
-
-.highlight .mh {
-  color: var(--color-pu);
-}
-
-.highlight .mi {
-  color: var(--color-pu);
-}
-
-.highlight .mo {
-  color: var(--color-pu);
-}
-
-.highlight .sb {
-  color: var(--color-gr);
-}
-
-.highlight .sc {
-  color: var(--color-gr);
-}
-
-.highlight .sd {
-  color: var(--color-gr);
-}
-
-.highlight .s2 {
-  color: var(--color-cy);
-}
-
-.highlight .se {
-  color: var(--color-re);
-}
-
-.highlight .sh {
-  color: var(--color-gr);
-}
-
-.highlight .si {
-  color: var(--color-gr);
-}
-
-.highlight .sx {
-  color: var(--color-gr);
-}
-
-.highlight .sr {
-  color: var(--color-re);
-}
-
-.highlight .s1 {
-  color: var(--color-cy);
-}
-
-.highlight .ss {
-  color: var(--color-re);
-}
-
-.highlight .bp {
-  color: var(--color-tx-faint);
-}
-
-.highlight .vc {
-  color: var(--color-cy);
-}
-
-.highlight .vg {
-  color: var(--color-cy);
-}
-
-.highlight .vi {
-  color: var(--color-cy);
-}
-
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
 .highlight .il {
-  color: var(--color-pu);
+  color: var(--action);
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sr,
+.highlight .ss,
+.highlight .sx {
+  color: var(--muted);
+}
+
+.highlight .na,
+.highlight .nb,
+.highlight .nc,
+.highlight .nf,
+.highlight .nn,
+.highlight .nt {
+  color: var(--tx);
+}
+
+.highlight .o,
+.highlight .p,
+.highlight .w {
+  color: var(--muted);
 }

@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<h1>Now</h1>
+{{ content }}
+{% assign entries = site.now | sort: 'date' | reverse %}
+{% if entries.size > 0 %}
+  {% assign latest = entries[0] %}
+  <p class="meta">Updated {{ latest.date | date: '%B %Y' }}</p>
+  {{ latest.content }}
+  {% if entries.size > 1 %}
+    <span class="label">Previously</span>
+    <ul class="rows">
+      {% for entry in entries offset: 1 %}
+        <li>
+          <div class="row-head">
+            <a class="t plain" href="{{ entry.url | relative_url }}">
+              {{- entry.date | date: '%B %Y' -}}
+            </a>
+            <span class="meta">{{ entry.date | date: '%b %-d, %Y' }}</span>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% else %}
+  <p class="muted">No entries yet. Add a file in <code>_now/</code>.</p>
+{% endif %}
