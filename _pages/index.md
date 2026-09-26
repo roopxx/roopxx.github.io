@@ -13,6 +13,6 @@ Django, plus whatever frontend a feature needs.
 This site is where I keep [notes](/notes/), a [weekly log](/weekly/), and what
 I'm [reading](/reading/) and [working on](/work/).
 
-[Email](mailto:rupesh.roopxx@gmail.com) · [GitHub](https://github.com/rupesh-ps)
-· [LinkedIn](https://www.linkedin.com/in/rupesh-ps/) · [Resume](/resume/) ·
+[Email](mailto:rupesh.roopxx@gmail.com) · [GitHub](https://github.com/roopxx) ·
+[LinkedIn](https://www.linkedin.com/in/roopxx/) · [Resume](/resume/) ·
 [RSS](/feed.xml)
