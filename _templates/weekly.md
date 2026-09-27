@@ -1,5 +1,6 @@
 ---
 title: Week NN
+date: 2026-01-01
 summary: One line for the index.
 tags: []
 ---
