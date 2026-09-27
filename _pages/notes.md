@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: notes-index
 title: Notes
 permalink: /notes/
 redirect_from: /blog/
