@@ -72,7 +72,7 @@ defaults:
   - scope:
       path: "_reading/**/*.md"
     values:
-      layout: page
+      layout: reading
   - scope:
       path: "_now/**/*.md"
     values:

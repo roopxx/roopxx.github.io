@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article>
+  <h1>{{ page.title }}</h1>
+  <p class="meta">
+    {{- page.author -}}
+    {%- if page.status == 'finished' -%}
+      {%- if page.finished %}
+        · Finished {{ page.finished | date: '%b %Y' -}}
+      {%- else %}
+        · Finished
+      {%- endif -%}
+    {%- elsif page.status == 'reading' -%}
+      {%- if page.started %}
+        · Started {{ page.started | date: '%b %Y' -}}
+      {%- else %}
+        · Reading
+      {%- endif -%}
+    {%- endif -%}
+  </p>
+  {{ content }}
+  {% if page.link %}
+    <p class="meta">
+      <a href="{{ page.link }}">{{ page.link | remove_first: 'https://' }}</a>
+    </p>
+  {% endif %}
+  <hr />
+  <p class="meta"><a href="{{ '/reading/' | relative_url }}">← Reading</a></p>
+</article>

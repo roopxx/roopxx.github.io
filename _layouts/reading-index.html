@@ -1,0 +1,51 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+
+{{ content }}
+
+{% assign reading = site.reading
+  | where_exp: 'item', 'item.status != "finished"'
+%}
+{% assign finished = site.reading
+  | where: 'status', 'finished'
+  | sort: 'finished'
+  | reverse
+%}
+
+{% if reading.size > 0 %}
+  <span class="label">Reading</span>
+  <ul class="rows">
+    {% for item in reading %}
+      <li>
+        <div class="row-head">
+          <a class="t plain" href="{{ item.url | relative_url }}">
+            {{- item.title -}}
+          </a>
+          {% if item.author %}
+            <span class="meta">{{ item.author }}</span>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if finished.size > 0 %}
+  <span class="label">Finished</span>
+  <ul class="rows">
+    {% for item in finished %}
+      <li>
+        <div class="row-head">
+          <a class="t plain" href="{{ item.url | relative_url }}">
+            {{- item.title -}}
+          </a>
+          {% if item.author %}
+            <span class="meta">{{ item.author }}</span>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
