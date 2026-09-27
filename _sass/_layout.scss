@@ -117,6 +117,61 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
   margin-top: 1.6rem;
 }
 
+/* ---------------------------------------------------------------- poems */
+/* Line breaks inside a poem are preserved, so it can be written as plain
+   lines. Scoped to paragraphs so the blank lines between blocks (and around
+   headings) do not render as extra vertical space. */
+.poems p {
+  white-space: pre-line;
+}
+
+/* Contents list, generated from the poem headings. A hairline closes it off
+   from the poems below. */
+.poem-contents {
+  padding-bottom: 1.7rem;
+  border-bottom: 1px solid var(--ui);
+}
+
+.poem-contents ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.poem-contents li {
+  margin: 0.15rem 0;
+}
+
+.poem-contents li::marker {
+  color: var(--faint);
+}
+
+.poem-contents a {
+  text-decoration: none;
+}
+
+.poem-contents a:hover {
+  color: var(--action);
+}
+
+/* Each poem after the first is set off by a dash, dot, dash ornament. */
+.poem-sep {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  margin: 2.6rem 0;
+  color: var(--faint);
+  line-height: 1;
+}
+
+.poem-sep::before,
+.poem-sep::after {
+  flex: 0 0 auto;
+  width: 3.5rem;
+  border-top: 1px solid var(--ui);
+  content: "";
+}
+
 /* ---------------------------------------------------------------- resume */
 .resume h2 {
   margin: 2.2rem 0 0.9rem;

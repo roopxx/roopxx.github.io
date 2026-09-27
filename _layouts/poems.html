@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+
+{% assign parts = content | split: '<h2' %}
+<div class="poems">
+  {{ parts[0] }}
+  {%- if parts.size > 2 %}
+    {%- assign headings = parts
+      | slice: 1, parts.size
+      | join: '<div class="poem-sep" aria-hidden="true">·</div><h2'
+    -%}
+    <nav class="poem-contents" aria-label="Contents">
+      <span class="label">Contents</span>
+      <ul>
+        {%- for part in parts offset: 1 %}
+          {%- assign after_id = part | split: 'id="' -%}
+          {%- assign rest = after_id[1] -%}
+          {%- assign id = rest | split: '"' | first -%}
+          {%- assign tail = rest | split: '"' | slice: 1, 99 | join: '"' -%}
+          {%- assign title = tail
+            | remove_first: '>'
+            | split: '</h2>'
+            | first
+          -%}
+          <li
+            ><a href="#{{ id }}">{{ title }}</a></li
+          >
+        {%- endfor %}
+      </ul>
+    </nav>
+    {{ '<h2' -}}
+    {{- headings }}
+  {%- endif %}
+</div>
