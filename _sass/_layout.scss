@@ -1,7 +1,17 @@
+/* The column fills the viewport and `main` grows, so the footer sits at the
+   bottom of the screen on short pages without being fixed over the content. */
 .col {
+  display: flex;
+  flex-direction: column;
   max-width: var(--measure);
+  min-height: 100vh;
+  min-height: 100svh;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 6rem;
+  padding: 2.5rem 1.25rem 2.5rem;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .skip-link {
@@ -234,12 +244,12 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
 
 @media (max-width: 600px) {
   .col {
-    padding: 2rem 1.15rem 5rem;
+    padding: 1.5rem 1.15rem 2rem;
   }
 
   .site-head {
-    gap: 0.7rem 1rem;
-    margin-bottom: 2.5rem;
+    gap: 0.6rem 1rem;
+    margin-bottom: 1.6rem;
   }
 
   .brand {
@@ -255,7 +265,7 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
     order: 3;
     flex-basis: 100%;
     margin-left: 0;
-    gap: 0.9rem;
-    font-size: 0.9rem;
+    gap: 0.8rem;
+    font-size: 0.88rem;
   }
 }
