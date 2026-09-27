@@ -68,7 +68,7 @@ defaults:
   - scope:
       path: "_work/**/*.md"
     values:
-      layout: page
+      layout: work
   - scope:
       path: "_reading/**/*.md"
     values:

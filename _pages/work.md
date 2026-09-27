@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: work-index
 title: Work
 permalink: /work/
 description: A sample of the work I've done.
