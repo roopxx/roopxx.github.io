@@ -64,7 +64,7 @@ defaults:
   - scope:
       path: "_weekly/**/*.md"
     values:
-      layout: page
+      layout: weekly
   - scope:
       path: "_work/**/*.md"
     values:

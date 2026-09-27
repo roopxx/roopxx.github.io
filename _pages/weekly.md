@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: weekly-index
 title: Weekly
 permalink: /weekly/
 description: A short log of what I built, learned, and read each week.

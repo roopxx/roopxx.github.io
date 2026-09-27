@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article>
+  <h1>{{ page.title }}</h1>
+  {% if page.date %}
+    <p class="meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{- page.date | date: '%b %-d, %Y' -}}
+      </time>
+    </p>
+  {% endif %}
+  {{ content }}
+  <hr />
+  <p class="meta"><a href="{{ '/weekly/' | relative_url }}">← Weekly</a></p>
+</article>
