@@ -28,10 +28,10 @@ fi
 
 # 2. Rebuild the resume PDF when its source changes, so the committed PDF can't
 #    drift from _data/resume.yml.
-RESUME_SRC="$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(_data/resume\.yml|resume/(resume\.typ|fonts/))' || true)"
+RESUME_SRC="$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(_data/resume\.yml|tools/resume/(resume\.typ|fonts/))' || true)"
 if [ -n "$RESUME_SRC" ]; then
   if command -v typst >/dev/null 2>&1; then
-    bash resume/build.sh
+    bash tools/resume/build.sh
     git add assets/resume.pdf
   else
     echo "pre-commit: resume sources changed but typst is not installed." >&2

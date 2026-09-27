@@ -4,7 +4,7 @@
 Why pdfminer.six and not pdftotext: poppler runs a word-reassembly heuristic
 that silently repairs tracked-out text, so a `pdftotext | grep` gate passes on
 exactly the document it is meant to catch. pdfminer does not do that, and it is
-closer to the Python extraction used by real ATS pipelines. See resume/README.md.
+closer to the Python extraction used by real ATS pipelines. See README.md.
 
 Exits non-zero if any gate fails.
 """
@@ -13,7 +13,7 @@ import sys
 from pdfminer.high_level import extract_text
 from pypdf import PdfReader
 
-PDF = sys.argv[1] if len(sys.argv) > 1 else "../assets/resume.pdf"
+PDF = sys.argv[1] if len(sys.argv) > 1 else "../../assets/resume.pdf"
 
 # Gate 1 — the contact line must survive extraction (no icon fonts).
 CONTACT = (

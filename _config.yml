@@ -24,8 +24,19 @@ feed_url: /feed.xml
 permalink: pretty
 
 include: ["_pages"]
+
+# Collections (posts, weekly, work, reading, now) live together under content/.
+collections_dir: content
+
+# What is not part of the published site. Jekyll already ignores dotfiles,
+# node_modules, Gemfile and Gemfile.lock; these are the rest.
 exclude:
-  ["CONTENT.md", "README.md", "Gemfile", "Gemfile.lock", "vendor", ".github"]
+  - README.md
+  - docs
+  - tools
+  - package.json
+  - package-lock.json
+  - vendor
 
 plugins:
   - jekyll-redirect-from
@@ -58,23 +69,23 @@ defaults:
     values:
       layout: page
   - scope:
-      path: "_posts/**/*.md"
+      path: "content/_posts/**/*.md"
     values:
       layout: post
   - scope:
-      path: "_weekly/**/*.md"
+      path: "content/_weekly/**/*.md"
     values:
       layout: weekly
   - scope:
-      path: "_work/**/*.md"
+      path: "content/_work/**/*.md"
     values:
       layout: work
   - scope:
-      path: "_reading/**/*.md"
+      path: "content/_reading/**/*.md"
     values:
       layout: reading
   - scope:
-      path: "_now/**/*.md"
+      path: "content/_now/**/*.md"
     values:
       layout: now
 

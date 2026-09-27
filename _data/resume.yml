@@ -1,9 +1,9 @@
-# The resume. This file is the source of truth; resume/resume.typ only controls
-# how it looks. Field names follow JSON Resume (https://jsonresume.org/schema)
-# so the content outlives whatever renders it.
+# The resume. This file is the source of truth; tools/resume/resume.typ only
+# controls how it looks. Field names follow JSON Resume
+# (https://jsonresume.org/schema), so the content outlives whatever renders it.
 #
-# Dates are ISO `YYYY-MM`. An absent `endDate` means "Present" — do not write
-# display strings like "Sep 2024 - Present" here, the renderer formats them.
+# Dates are ISO `YYYY-MM`. An absent `endDate` means "Present", so don't write
+# display strings like "Sep 2024 - Present" here. The renderer formats them.
 
 basics:
   name: Rupesh P S

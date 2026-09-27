@@ -1,18 +1,18 @@
-// resume.typ - layout only. All content lives in ../_data/resume.yml
-// (JSON Resume field names). Nothing here is a fact about Rupesh.
+// resume.typ - the layout for the resume. The content is in the site's
+// _data/resume.yml, and this file only ever reads it.
 //
-// Three rules, each a measured ATS failure rather than a preference:
-//   1. no letter-spacing on section headings - tracked-out headings extract as
-//      "E X P E R I E N C E" and the parser finds no Experience section.
-//   2. no icon fonts - their glyphs have no Unicode mapping and garble the
-//      contact line on extraction.
-//   3. ragged-right, never justified.
-// Plus: exactly one page, asserted at the bottom.
+// Three choices here are deliberate, because each one breaks text extraction:
+//   1. No letter-spacing on section headings. Tracked-out text comes back as
+//      "E X P E R I E N C E", so the parser never finds the section.
+//   2. No icon fonts. Their glyphs have no Unicode mapping, so they extract as
+//      junk in place of an email or a URL.
+//   3. Ragged right, never justified.
+// The page count is asserted at the bottom: one page, exactly.
 //
 // Type roles, in the spirit of the site: a display face for the name, a text
 // serif for prose, a mono for facts (headings, dates, contact).
 
-#let r = yaml("../_data/resume.yml")
+#let r = yaml("../../_data/resume.yml")
 #let basics = r.basics
 
 // -- tokens ----------------------------------------------------------------
@@ -171,8 +171,8 @@
 }
 
 // -- the one-page invariant ------------------------------------------------
-// In the document on purpose, so `typst watch` catches an overflowing bullet
-// while writing it.
+// Kept in the document rather than in the build script, so an overlong bullet
+// shows up in `typst watch` while I'm still writing it.
 #context {
   let n = counter(page).final().first()
   assert(

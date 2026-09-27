@@ -2,12 +2,12 @@
   "name": "roopxx.github.io",
   "version": "0.0.0",
   "private": true,
-  "description": "Dev tooling only — the site is built by Jekyll. See CONTENT.md.",
+  "description": "Dev tooling only — the site is built by Jekyll. See README.md.",
   "scripts": {
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "check": "bundle exec jekyll build --quiet && RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external",
-    "resume": "bash resume/build.sh",
+    "resume": "bash tools/resume/build.sh",
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "devDependencies": {
