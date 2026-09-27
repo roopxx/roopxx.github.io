@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<h1>{{ site.name }}</h1>
+
+{{ content }}
+
+{% if page.focus %}
+  <p class="home-focus">
+    {{ page.focus }}
+    <a class="nowrap" href="{{ '/now/' | relative_url }}">→ Now</a>
+  </p>
+{% endif %}
+
+{% assign activity = site.posts
+  | concat: site.weekly
+  | where_exp: 'item', 'item.date'
+  | sort: 'date'
+  | reverse
+%}
+{% if activity.size > 0 %}
+  <span class="label">Latest</span>
+  <ul class="rows">
+    {% for item in activity limit: 3 %}
+      <li>
+        <div class="row-head">
+          <a class="t plain" href="{{ item.url | relative_url }}">
+            {{- item.title -}}
+          </a>
+          <span class="meta">{{ item.date | date: '%b %-d, %Y' }}</span>
+        </div>
+        {% assign blurb = item.summary | default: item.description %}
+        {% if blurb %}
+          <div class="row-desc">{{ blurb }}</div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
