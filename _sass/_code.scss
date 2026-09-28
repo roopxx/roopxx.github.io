@@ -34,7 +34,8 @@ div.highlight {
 .highlight .cm,
 .highlight .cp,
 .highlight .cs {
-  color: var(--faint);
+  color: var(--muted);
+  font-style: italic;
 }
 
 .highlight .k,
