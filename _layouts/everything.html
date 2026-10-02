@@ -1,20 +1,59 @@
 ---
 layout: default
 ---
+{%- assign e = site.data.everything -%}
 <h1>{{ page.title }}</h1>
 
 {{ content }}
 
-{% assign items = site.posts
-  | concat: site.weekly
-  | concat: site.work
-  | where_exp: 'item', 'item.date and item.date != site.time'
-  | sort: 'date'
-  | reverse
-%}
-{% if items.size > 0 %}
-  <span class="label">Stream</span>
-  {% include rows-by-year.html items=items blurb='summary' kinds=true fresh=true %}
+{% if e.rows.size > 0 %}
+  <span class="label">{{ e.lanes | join: ' · ' }}</span>
+  {%- comment -%}
+    Lines come from one SVG behind the list; dots are part of each row so they
+    can react to hover. Both use the units set here, in rem (1 unit = 1/16).
+  {%- endcomment -%}
+  <div
+    class="graph"
+    style="--row: {{ e.row | divided_by: 16.0 }}rem; --lane: {{ e.lane | divided_by: 16.0 }}rem; --pad: {{ e.pad | divided_by: 16.0 }}rem; --gutter: {{ e.width | divided_by: 16.0 }}rem"
+  >
+    <svg
+      class="graph-lines"
+      viewBox="0 0 {{ e.width }} {{ e.height }}"
+      style="width: {{ e.width | divided_by: 16.0 }}rem; height: {{ e.height | divided_by: 16.0 }}rem"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {%- for d in e.paths %}
+        <path d="{{ d }}" />
+      {%- endfor %}
+    </svg>
+    <ul class="graph-rows">
+      {%- for row in e.rows %}
+        {%- if row.type == 'year' %}
+          <li class="graph-year meta">{{ row.label }}</li>
+        {%- else %}
+          <li
+            {% if row.fresh %}
+              class="fresh"
+            {% endif %}
+          >
+            <span class="dot" style="--n: {{ row.lane }}"></span>
+            <a
+              class="t plain"
+              href="{{ row.url | relative_url }}"
+              {% if row.blurb %}
+                title="{{ row.blurb | strip_html | escape }}"
+              {% endif %}
+            >
+              {{- row.title -}}
+            </a>
+            <span class="meta">{{ row.kind }} · {{ row.date }}</span>
+          </li>
+        {%- endif %}
+      {%- endfor %}
+    </ul>
+  </div>
 {% else %}
   {% include empty.html text='Nothing here yet.' %}
 {% endif %}

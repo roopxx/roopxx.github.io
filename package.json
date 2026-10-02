@@ -6,6 +6,8 @@
   "scripts": {
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
+    "build": "bundle exec jekyll build",
+    "dev": "bundle exec jekyll serve --livereload",
     "check": "bundle exec jekyll build --quiet && env -u DEBUG RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external",
     "resume": "bash tools/resume/build.sh",
     "prepare": "git config core.hooksPath .githooks || true"

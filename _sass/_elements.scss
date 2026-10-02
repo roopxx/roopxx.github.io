@@ -162,15 +162,80 @@ details > :last-child {
   }
 }
 
-/* Marks an entry from the last seven days. */
-.fresh {
-  display: inline-block;
-  width: 0.4em;
-  height: 0.4em;
-  margin-left: 0.45em;
-  vertical-align: 0.15em;
-  background: var(--action);
+/* The everything page: a `git log --graph` of the site. One SVG draws the
+   lanes behind the list; every row is one fixed-height line, so the two line
+   up. --row, --lane, --pad and --gutter are set on .graph by the layout. */
+.graph {
+  position: relative;
+}
+
+.graph-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  stroke: var(--faint);
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+.graph-rows {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.graph-rows > li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: var(--row);
+  margin: 0;
+  padding-left: calc(var(--gutter) + 0.6rem);
+}
+
+.graph-rows .t {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.graph-rows .meta {
+  flex: none;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.graph-rows .graph-year {
+  color: var(--faint);
+}
+
+.graph-rows .graph-year.meta {
+  margin-left: 0;
+}
+
+/* A ring on its lane; the page colour inside it hides the line beneath.
+   Filled with the accent when the entry is fresh or the row is hovered. */
+.graph-rows .dot {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--pad) + var(--n) * var(--lane));
+  width: 0.56rem;
+  height: 0.56rem;
+  background: var(--bg);
+  border: 1.5px solid var(--muted);
   border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.graph-rows .fresh .dot,
+.graph-rows li:hover .dot,
+.graph-rows li:focus-within .dot {
+  background: var(--action);
+  border-color: var(--action);
 }
 
 /* What an index shows before it has entries. */

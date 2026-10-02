@@ -87,3 +87,31 @@
       });
   });
 </script>
+<script>
+  /* 404: the pupil follows the pointer. Its reach is in SVG units, so it
+     stays inside the ring at any size. After a pause the idle animation
+     takes over again. */
+  (function () {
+    var lost = document.querySelector('.lost');
+    var ring = document.querySelector('.lost-ring');
+    var pupil = document.querySelector('.lost-pupil');
+    if (!lost || !ring || !pupil) return;
+    var reach = 104;
+    var timer;
+
+    document.addEventListener('pointermove', function (e) {
+      var box = ring.getBoundingClientRect();
+      var dx = e.clientX - (box.left + box.width / 2);
+      var dy = e.clientY - (box.top + box.height / 2);
+      var dist = Math.hypot(dx, dy) || 1;
+      var k = Math.min(1, dist / (box.width * 1.5)) * reach;
+      pupil.style.transform =
+        'translate(' + (dx / dist) * k + 'px, ' + (dy / dist) * k + 'px)';
+      lost.classList.add('live');
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        lost.classList.remove('live');
+      }, 2500);
+    });
+  })();
+</script>

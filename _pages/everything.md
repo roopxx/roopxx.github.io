@@ -5,5 +5,5 @@ permalink: /everything/
 description: Every note, weekly entry and write-up, newest first.
 ---
 
-Every note, weekly entry and write-up in one stream, newest first. Anything
-from the last seven days carries a dot.
+Every note, weekly entry and write-up as one history, newest first. Each kind
+runs in its own lane; a filled dot is from the last seven days.

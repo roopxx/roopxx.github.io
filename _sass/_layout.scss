@@ -173,39 +173,56 @@ html[data-mode="dark"] .logo-eyes .pupil {
   }
 }
 
-/* The 404 page: a large pair of eyes looking for the page. */
-.eyes-lost {
-  display: block;
-  width: 7.5rem;
-  margin: 0.4rem 0 1.6rem;
+/* The 404 page: a large 404 whose zero is a single eye. The pupil follows
+   the pointer (script.html) and, left alone, looks around on its own. */
+.lost {
+  margin: 0.6rem 0 1.6rem;
   color: var(--tx);
 }
 
-.eyes-lost .pupil {
+.lost-mark {
+  display: block;
+  width: min(100%, 19rem);
+  height: auto;
+  overflow: visible;
+}
+
+.lost-pupil {
   transform-box: fill-box;
   transform-origin: center;
 }
 
+/* Pointer tracking sets the transform inline; the idle animation wins over
+   it while it runs, and stops while the pointer is active. */
 @keyframes look-around {
   0%,
-  22% {
-    transform: translate(-3.5px, 0);
+  16% {
+    transform: translate(0, 0);
   }
 
-  32%,
-  58% {
-    transform: translate(-7.5px, 0.6px);
+  24%,
+  40% {
+    transform: translate(-88px, -22px);
   }
 
-  68%,
-  92% {
-    transform: translate(0.8px, 0.6px);
+  48%,
+  64% {
+    transform: translate(88px, -22px);
+  }
+
+  72%,
+  88% {
+    transform: translate(0, 90px);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .eyes-lost .pupil {
-    animation: look-around 6s ease-in-out infinite;
+  .lost-pupil {
+    transition: transform 0.12s ease-out;
+  }
+
+  .lost:not(.live) .lost-pupil {
+    animation: look-around 7s ease-in-out infinite;
   }
 }
 
