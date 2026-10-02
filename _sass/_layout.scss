@@ -37,6 +37,7 @@ main {
 }
 
 .brand {
+  color: var(--tx);
   text-decoration: none;
 }
 
@@ -122,9 +123,32 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
   font-size: 0.88rem;
 }
 
+/* Build line: which commit is live and when it went out, in the same mono
+   voice as the rest of the metadata. Sits right on wide screens, wraps under
+   the links on narrow ones. */
+.site-foot .build {
+  margin-left: auto;
+  padding: 0.35rem 0;
+}
+
+.site-foot .build a {
+  color: var(--tx);
+}
+
 /* ---------------------------------------------------------------- home */
+.home-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.1rem;
+  margin: 1.4rem 0 0;
+}
+
+.home-counts a {
+  padding: 0.3rem 0;
+}
+
 .home-focus {
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
 }
 
 /* ---------------------------------------------------------------- poems */
@@ -183,10 +207,17 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
 }
 
 /* ---------------------------------------------------------------- resume */
+/* Section headings use the same mono eyebrow as the index labels, so they
+   sit clearly above the item titles instead of matching them. */
 .resume h2 {
-  margin: 2.2rem 0 0.9rem;
-  padding-bottom: 0.35rem;
-  font-size: 1rem;
+  margin: 2.4rem 0 0.9rem;
+  padding-bottom: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
   border-bottom: 1px solid var(--ui);
 }
 
@@ -219,9 +250,12 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
   margin-top: 1.6rem;
 }
 
-.resume-contact a + a::before {
-  content: " · ";
-  color: var(--muted);
+/* The separator trails each link but the last, with its spacing as margin:
+   whitespace in generated content collapses at the edge of an inline-block. */
+.resume-contact a:not(:last-child)::after {
+  margin: 0 0.55em;
+  color: var(--faint);
+  content: "·";
 }
 
 .resume-item {

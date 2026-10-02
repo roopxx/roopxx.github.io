@@ -24,7 +24,5 @@ layout: default
     </ul>
   {% endif %}
 {% else %}
-  <p class="muted">
-    No entries yet. Add a file in <code>content/_now/</code>.
-  </p>
+  {% include empty.html text='No entries yet.' %}
 {% endif %}

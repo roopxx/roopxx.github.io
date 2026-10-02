@@ -1,9 +1,20 @@
+/* The accent belongs to links. Everything else stays ink or muted, so the
+   month's colour is visible at rest and not only on hover. */
 a {
-  color: inherit;
+  color: var(--action);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.17em;
   text-decoration-color: var(--faint);
+}
+
+/* Titles that are links (index rows, breadcrumbs) read as ink until hovered. */
+a.plain {
+  color: inherit;
+}
+
+a.muted {
+  color: var(--muted);
 }
 
 a:hover {
@@ -11,8 +22,22 @@ a:hover {
   text-decoration-color: currentColor;
 }
 
+a.plain:hover,
+a.plain:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--action);
+}
+
+:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .site-head nav a,
 .site-foot a {
+  padding: 0.35rem 0;
   color: var(--muted);
   text-decoration: none;
 }
@@ -22,6 +47,21 @@ a:hover {
   color: var(--action);
 }
 
+/* The current section carries the same dot as the wordmark. It is positioned
+   out of flow so the nav does not shift between pages. */
 .site-head nav a[aria-current="page"] {
+  position: relative;
   color: var(--tx);
+}
+
+.site-head nav a[aria-current="page"]::after {
+  position: absolute;
+  left: 100%;
+  bottom: calc(0.35rem + 0.42em);
+  width: 0.24em;
+  height: 0.24em;
+  margin-left: 0.14em;
+  background: var(--action);
+  border-radius: 50%;
+  content: "";
 }

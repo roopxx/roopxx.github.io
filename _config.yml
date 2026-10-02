@@ -17,7 +17,7 @@ domain: roopxx.github.io
 url: https://roopxx.github.io
 baseurl: ""
 repository: roopxx/roopxx.github.io
-image: /assets/cover.png
+image: /assets/og-cover.png
 favicon: /assets/favicon/favicon.ico
 feed_url: /feed.xml
 

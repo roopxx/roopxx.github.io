@@ -41,5 +41,7 @@ if [ -n "$RESUME_SRC" ]; then
 fi
 
 # 3. Build and validate the generated HTML.
+#    DEBUG is unset rather than blanked: html-proofer treats any value, including
+#    an empty one, as "on" and then wants a debug gem that is not in the bundle.
 bundle exec jekyll build --quiet
-RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external
+env -u DEBUG RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external

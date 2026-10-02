@@ -25,6 +25,5 @@ layout: default
       <a href="{{ page.link }}">{{ page.link | remove_first: 'https://' }}</a>
     </p>
   {% endif %}
-  <hr />
-  <p class="meta"><a href="{{ '/reading/' | relative_url }}">← Reading</a></p>
+  {% include article-foot.html url='/reading/' label='Reading' %}
 </article>

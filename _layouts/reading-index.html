@@ -49,3 +49,7 @@ layout: default
     {% endfor %}
   </ul>
 {% endif %}
+
+{% if reading.size == 0 and finished.size == 0 %}
+  {% include empty.html text='No books yet.' %}
+{% endif %}

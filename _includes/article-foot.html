@@ -1,0 +1,29 @@
+{%- comment -%}
+  Closes an article: a link back to its index (`url`, `label`) and, when
+  `near` is set, the older and newer entries in the same collection.
+{%- endcomment -%}
+<nav class="meta article-foot" aria-label="More">
+  <a href="{{ include.url | relative_url }}">← {{ include.label }}</a>
+  {%- if include.near %}
+    {%- if page.previous or page.next %}
+      <span class="near">
+        {%- if page.previous %}
+          <a
+            href="{{ page.previous.url | relative_url }}"
+            title="{{ page.previous.title | escape }}"
+            rel="prev"
+            >← Older</a
+          >
+        {%- endif %}
+        {%- if page.next %}
+          <a
+            href="{{ page.next.url | relative_url }}"
+            title="{{ page.next.title | escape }}"
+            rel="next"
+            >Newer →</a
+          >
+        {%- endif %}
+      </span>
+    {%- endif %}
+  {%- endif %}
+</nav>

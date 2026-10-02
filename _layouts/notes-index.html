@@ -28,4 +28,6 @@ layout: default
       </li>
     {% endfor %}
   </ul>
+{% else %}
+  {% include empty.html text='No notes yet.' %}
 {% endif %}

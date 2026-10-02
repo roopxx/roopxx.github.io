@@ -17,6 +17,7 @@
 
 ::selection {
   background: var(--faint);
+  background: color-mix(in srgb, var(--action) 28%, var(--bg));
   color: var(--tx);
 }
 
@@ -33,9 +34,6 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
 }
 
 @media (max-width: 520px) {

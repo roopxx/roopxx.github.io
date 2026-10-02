@@ -19,6 +19,5 @@ layout: default
       <a href="{{ page.link }}">{{ page.link | remove_first: 'https://' }}</a>
     </p>
   {% endif %}
-  <hr />
-  <p class="meta"><a href="{{ '/work/' | relative_url }}">← Work</a></p>
+  {% include article-foot.html url='/work/' label='Work' %}
 </article>

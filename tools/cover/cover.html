@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- Source for assets/og-cover.png (1200x630). See tools/cover/build.sh. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 1200px;
+        height: 630px;
+        padding: 88px 96px 76px;
+        background: #fffcf0;
+        color: #100f0f;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .logotype {
+        display: inline-flex;
+        align-items: baseline;
+        font-size: 190px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      .logotype svg {
+        width: 0.94em;
+        height: 0.5em;
+        margin: 0 0.01em;
+      }
+      .dot {
+        display: inline-block;
+        width: 0.16em;
+        height: 0.16em;
+        margin-left: 0.14em;
+        background: #24837b;
+        border-radius: 50%;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 28px;
+        border-top: 2px solid #e6e4d9;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 26px;
+        color: #6f6e69;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logotype">
+      r
+      <svg
+        viewBox="0.5 3.5 47 25"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="4"
+        stroke-linecap="round"
+      >
+        <circle cx="13" cy="16" r="10.5" />
+        <circle cx="35" cy="16" r="10.5" />
+        <circle cx="16.5" cy="16" r="3.6" fill="currentColor" stroke="none" />
+        <circle cx="38.5" cy="16" r="3.6" fill="currentColor" stroke="none" />
+      </svg>
+      pxx<span class="dot"></span>
+    </div>
+    <div class="meta">
+      <span>Rupesh P S · full-stack software developer</span>
+      <span>roopxx.github.io</span>
+    </div>
+  </body>
+</html>

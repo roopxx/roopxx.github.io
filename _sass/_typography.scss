@@ -4,7 +4,7 @@
 }
 
 .meta {
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   line-height: 1.5;
   color: var(--muted);
 }
@@ -18,8 +18,18 @@
   color: var(--muted);
 }
 
+/* The opening paragraphs of the home page: the one large element in the
+   first viewport. */
 .lead {
-  font-size: 1.06rem;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 520px) {
+  .lead {
+    font-size: 1.1rem;
+  }
 }
 
 .muted {

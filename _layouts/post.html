@@ -20,6 +20,5 @@ layout: default
     {%- endif -%}
   </p>
   {{ content }}
-  <hr />
-  <p class="meta"><a href="{{ '/notes/' | relative_url }}">← Notes</a></p>
+  {% include article-foot.html url='/notes/' label='Notes' near=true %}
 </article>

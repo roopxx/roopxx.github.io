@@ -3,7 +3,38 @@ layout: default
 ---
 <h1>{{ site.name }}</h1>
 
-{{ content }}
+<div class="lead">{{ content }}</div>
+
+{% assign notes = site.posts | where_exp: 'item', 'item.date' %}
+{% assign total = site.work.size
+  | plus: notes.size
+  | plus: site.weekly.size
+  | plus: site.reading.size
+%}
+{% if total > 0 %}
+  <p class="meta home-counts">
+    {%- if site.work.size > 0 -%}
+      <a class="plain" href="{{ '/work/' | relative_url }}"
+        >work [{{ site.work.size }}]</a
+      >
+    {%- endif -%}
+    {%- if notes.size > 0 -%}
+      <a class="plain" href="{{ '/notes/' | relative_url }}"
+        >notes [{{ notes.size }}]</a
+      >
+    {%- endif -%}
+    {%- if site.weekly.size > 0 -%}
+      <a class="plain" href="{{ '/weekly/' | relative_url }}"
+        >weekly [{{ site.weekly.size }}]</a
+      >
+    {%- endif -%}
+    {%- if site.reading.size > 0 -%}
+      <a class="plain" href="{{ '/reading/' | relative_url }}"
+        >reading [{{ site.reading.size }}]</a
+      >
+    {%- endif -%}
+  </p>
+{% endif %}
 
 {% if page.focus %}
   <p class="home-focus">

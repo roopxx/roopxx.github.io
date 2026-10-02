@@ -11,6 +11,5 @@ layout: default
     </p>
   {% endif %}
   {{ content }}
-  <hr />
-  <p class="meta"><a href="{{ '/weekly/' | relative_url }}">← Weekly</a></p>
+  {% include article-foot.html url='/weekly/' label='Weekly' near=true %}
 </article>
