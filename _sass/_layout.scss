@@ -182,7 +182,7 @@ html[data-mode="dark"] .logo-eyes .pupil {
 
 .lost-mark {
   display: block;
-  width: min(100%, 19rem);
+  width: min(100%, 17rem);
   height: auto;
   overflow: visible;
 }
@@ -202,17 +202,17 @@ html[data-mode="dark"] .logo-eyes .pupil {
 
   24%,
   40% {
-    transform: translate(-88px, -22px);
+    transform: translate(-120px, -30px);
   }
 
   48%,
   64% {
-    transform: translate(88px, -22px);
+    transform: translate(120px, -30px);
   }
 
   72%,
   88% {
-    transform: translate(0, 90px);
+    transform: translate(0, 125px);
   }
 }
 
@@ -439,6 +439,7 @@ html[data-month="12"] .swatch[data-month="12"] {
   margin: 2.4rem 0 0.9rem;
   padding-bottom: 0.45rem;
   font-family: var(--font-mono);
+  font-variation-settings: var(--mono);
   font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.09em;

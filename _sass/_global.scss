@@ -1,10 +1,18 @@
+/* One typeface for everything: Recursive. Its MONO axis turns the same
+   letters into the monospace used for metadata and code, so there is no
+   second family. Built by tools/fonts/build.sh. */
+@font-face {
+  font-family: "Recursive";
+  src: url("../fonts/recursive.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: oblique 0deg 15deg;
+  font-display: swap;
+}
+
 :root {
-  --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    monospace;
+  --font-sans: "Recursive", sans-serif;
+  --font-mono: "Recursive", monospace;
+  --mono: "MONO" 1;
   --measure: 48rem;
   --radius: 5px;
 }

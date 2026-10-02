@@ -9,6 +9,7 @@
     "build": "bundle exec jekyll build",
     "dev": "bundle exec jekyll serve --livereload",
     "check": "bundle exec jekyll build --quiet && env -u DEBUG RUBYOPT=-EUTF-8 bundle exec htmlproofer _site --disable-external",
+    "fonts": "bash tools/fonts/build.sh",
     "resume": "bash tools/resume/build.sh",
     "prepare": "git config core.hooksPath .githooks || true"
   },

@@ -61,12 +61,13 @@ it ever stops being worth the trouble, only the layout changes.
 
 ## The typefaces
 
-Three families in `fonts/`, with their licences beside them, all SIL OFL. Typst
-takes TTF or OTF:
+One family in `fonts/`, with its licence beside it (SIL OFL): **Recursive**, the
+same typeface the site uses. Typst takes TTF or OTF and does not read variable
+fonts, so these are the static cuts:
 
-- **Baskervville** for the name, at 28pt, and nothing else.
-- **Source Serif 4** for prose, in Regular, SemiBold and Italic.
-- **JetBrains Mono** for the machine parts: section headings, dates, contact.
+- **Recursive Sans Linear** for the name and prose, in Regular, Italic and Bold.
+- **Recursive Mono Linear** for the machine parts: section headings, dates,
+  contact.
 
 Left-aligned throughout, dates right-aligned per entry, A4.
 
@@ -77,5 +78,5 @@ resume.typ          the layout
 check.py            the extraction checks
 build.sh            compile, then run check.py
 requirements.txt    pdfminer.six and pypdf, for check.py
-fonts/              the three families and their licences
+fonts/              Recursive and its licence
 ```

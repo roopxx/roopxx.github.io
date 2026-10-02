@@ -84,6 +84,7 @@ details {
 summary {
   list-style: none;
   font-family: var(--font-mono);
+  font-variation-settings: var(--mono);
   font-size: 0.8rem;
   color: var(--muted);
   cursor: pointer;
@@ -141,6 +142,7 @@ details > :last-child {
 .by-year .year {
   padding-top: 0.2rem;
   font-family: var(--font-mono);
+  font-variation-settings: var(--mono);
   font-size: 0.8rem;
   line-height: 1.5;
   color: var(--muted);
@@ -313,6 +315,7 @@ dl.focus {
 
 dl.focus dt {
   font-family: var(--font-mono);
+  font-variation-settings: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;

@@ -83,6 +83,13 @@
     href="{{ '/assets/favicon/site.webmanifest' | relative_url }}"
   />
 
+  <link
+    rel="preload"
+    href="{{ '/assets/fonts/recursive.woff2' | relative_url }}"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
   {% include theme-vars.html %}
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
   {% unless page.unlisted -%}

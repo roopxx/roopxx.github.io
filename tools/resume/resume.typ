@@ -19,9 +19,11 @@
 #let ink = rgb("#100f0f")
 #let quiet = rgb("#6f6e69")
 
-#let display = "Baskervville"
-#let paper = "Source Serif 4"
-#let machine = "JetBrains Mono"
+// One typeface, Recursive, the same as the site: its Sans for the name and
+// prose, its Mono for the machine parts.
+#let display = "Recursive Sn Lnr St"
+#let paper = "Recursive Sn Lnr St"
+#let machine = "Recursive Mn Lnr St"
 
 // -- date helpers ----------------------------------------------------------
 #let MONTHS = (
@@ -98,7 +100,7 @@
 // parser most wants. URLs are spelled out; there are no icons (rule 2).
 #{
   set block(spacing: 0em)
-  text(font: display, size: 28pt)[#basics.name]
+  text(font: display, size: 28pt, weight: "bold")[#basics.name]
   v(0.34em)
 
   let contact = (
@@ -125,7 +127,7 @@
 
 #for job in r.work {
   entry[
-    #row(text(size: 12.5pt, weight: 600)[#job.position], date-range(job))
+    #row(text(size: 12.5pt, weight: "bold")[#job.position], date-range(job))
     #subrow[#job.name]
     #if job.at("summary", default: none) != none [
       #block(above: 0.55em, below: 0em)[#job.summary]
@@ -139,7 +141,7 @@
 
 #for e in r.education {
   entry[
-    #row(text(size: 12.5pt, weight: 600)[#e.studyType of #e.area], fmt-date(e.at("endDate", default: none)))
+    #row(text(size: 12.5pt, weight: "bold")[#e.studyType of #e.area], fmt-date(e.at("endDate", default: none)))
     #subrow[#e.institution]
   ]
 }
@@ -165,7 +167,7 @@
 
 #for c in r.certificates {
   entry[
-    #row(text(size: 12.5pt, weight: 600)[#c.name], "")
+    #row(text(size: 12.5pt, weight: "bold")[#c.name], "")
     #subrow[#c.issuer]
   ]
 }
