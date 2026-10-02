@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+
+{{ content }}
+
+{% assign items = site.posts
+  | concat: site.weekly
+  | concat: site.work
+  | where_exp: 'item', 'item.date and item.date != site.time'
+  | sort: 'date'
+  | reverse
+%}
+{% if items.size > 0 %}
+  <span class="label">Stream</span>
+  {% include rows-by-year.html items=items blurb='summary' kinds=true fresh=true %}
+{% else %}
+  {% include empty.html text='Nothing here yet.' %}
+{% endif %}

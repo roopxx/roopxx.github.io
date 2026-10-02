@@ -1,0 +1,58 @@
+{%- comment -%}
+  Index rows with the year printed once in a left gutter. Pass `items`
+  (already sorted newest first). `blurb` names the field used for the
+  one-line description. `kinds=true` adds a mono tag naming the collection,
+  and `fresh=true` marks anything dated within the last seven days.
+{%- endcomment -%}
+{%- assign week_ago = site.time | date: '%s' | plus: 0 | minus: 604800 -%}
+{%- assign groups = include.items
+  | group_by_exp: 'item', 'item.date | date: "%Y"'
+-%}
+<ul class="rows by-year">
+  {%- for group in groups %}
+    <li>
+      <span class="year">{{ group.name }}</span>
+      <ul class="rows">
+        {%- for item in group.items %}
+          {%- assign ts = item.date | date: '%s' | plus: 0 -%}
+          <li>
+            <div class="row-head">
+              <a class="t plain" href="{{ item.url | relative_url }}">
+                {{- item.title -}}
+                {%- if include.fresh and ts >= week_ago %}
+                  <span class="fresh" title="This week"></span>
+                {%- endif -%}
+              </a>
+              <span class="meta">
+                {%- if include.kinds -%}
+                  {%- case item.collection -%}
+                    {%- when 'posts' -%}
+                      note
+                    {%- when 'weekly' -%}
+                      week
+                    {%- when 'work' -%}
+                      work
+                    {%- when 'reading' -%}
+                      read
+                    {%- when 'now' -%}
+                      now
+                  {%- endcase %}
+                  ·
+                {% endif -%}
+                {{ item.date | date: '%b %-d' }}
+              </span>
+            </div>
+            {%- if include.blurb == 'description' -%}
+              {%- assign blurb = item.description | default: item.summary -%}
+            {%- else -%}
+              {%- assign blurb = item.summary | default: item.description -%}
+            {%- endif -%}
+            {%- if blurb %}
+              <div class="row-desc">{{ blurb }}</div>
+            {%- endif %}
+          </li>
+        {%- endfor %}
+      </ul>
+    </li>
+  {%- endfor %}
+</ul>

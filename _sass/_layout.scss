@@ -105,12 +105,143 @@ main {
   display: block;
 }
 
-html[data-theme$="-dark"] #theme-toggle .icon-sun {
+html[data-mode="dark"] #theme-toggle .icon-sun {
   display: none;
 }
 
-html[data-theme$="-dark"] #theme-toggle .icon-moon {
+html[data-mode="dark"] #theme-toggle .icon-moon {
   display: block;
+}
+
+/* ----------------------------------------------------------------- eyes */
+/* The pupils move as a unit. Hovering the wordmark makes them look straight
+   out; hovering the nav or the toggle makes them glance that way. In the
+   dark they dilate, and the toggle makes them blink (class set by script). */
+.logo-eyes .pupil {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.brand:hover .logo-eyes .pupil {
+  transform: translate(-3.5px, 0);
+}
+
+.site-head:has(nav:hover) .logo-eyes .pupil {
+  transform: translate(1.3px, 0);
+}
+
+.site-head:has(#theme-toggle:hover) .logo-eyes .pupil {
+  transform: translate(1.3px, -1.6px);
+}
+
+html[data-mode="dark"] .logo-eyes .pupil {
+  r: 4.8;
+}
+
+.logo-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  45%,
+  55% {
+    transform: scaleY(0.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-eyes .pupil {
+    transition:
+      transform 0.18s ease,
+      r 0.25s ease;
+  }
+
+  .logo-eyes.blink {
+    animation: blink 0.32s ease-in-out;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-head:has(nav:hover) .logo-eyes .pupil {
+    transform: translate(0, 2.2px);
+  }
+}
+
+/* The 404 page: a large pair of eyes looking for the page. */
+.eyes-lost {
+  display: block;
+  width: 7.5rem;
+  margin: 0.4rem 0 1.6rem;
+  color: var(--tx);
+}
+
+.eyes-lost .pupil {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes look-around {
+  0%,
+  22% {
+    transform: translate(-3.5px, 0);
+  }
+
+  32%,
+  58% {
+    transform: translate(-7.5px, 0.6px);
+  }
+
+  68%,
+  92% {
+    transform: translate(0.8px, 0.6px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eyes-lost .pupil {
+    animation: look-around 6s ease-in-out infinite;
+  }
+}
+
+/* ----------------------------------------------------------------- rail */
+/* Reading progress for articles: a line across the top of the viewport
+   that fills as the document scrolls. Only painted where the browser has
+   scroll-driven animations; it stays at zero width on short pages. */
+.rail {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .rail {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 2px;
+    background: var(--action);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    animation: fill-rail linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  @keyframes fill-rail {
+    from {
+      transform: scaleX(0);
+    }
+
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 .site-foot {
@@ -133,6 +264,84 @@ html[data-theme$="-dark"] #theme-toggle .icon-moon {
 
 .site-foot .build a {
   color: var(--tx);
+}
+
+/* Palette strip: twelve dots, one per month in its accent, hollow except the
+   current one, which is filled and named. Sits on its own line. */
+.site-foot .palette {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.8rem;
+  padding: 0.35rem 0 0;
+}
+
+.swatches {
+  display: inline-flex;
+  gap: 0.45rem;
+}
+
+.swatch {
+  --c: var(--light);
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--c);
+}
+
+html[data-mode="dark"] .swatch {
+  --c: var(--dark);
+}
+
+/* The script records the visitor's month on <html>; that month's dot fills. */
+html[data-month="1"] .swatch[data-month="1"] {
+  background: var(--c);
+}
+
+html[data-month="2"] .swatch[data-month="2"] {
+  background: var(--c);
+}
+
+html[data-month="3"] .swatch[data-month="3"] {
+  background: var(--c);
+}
+
+html[data-month="4"] .swatch[data-month="4"] {
+  background: var(--c);
+}
+
+html[data-month="5"] .swatch[data-month="5"] {
+  background: var(--c);
+}
+
+html[data-month="6"] .swatch[data-month="6"] {
+  background: var(--c);
+}
+
+html[data-month="7"] .swatch[data-month="7"] {
+  background: var(--c);
+}
+
+html[data-month="8"] .swatch[data-month="8"] {
+  background: var(--c);
+}
+
+html[data-month="9"] .swatch[data-month="9"] {
+  background: var(--c);
+}
+
+html[data-month="10"] .swatch[data-month="10"] {
+  background: var(--c);
+}
+
+html[data-month="11"] .swatch[data-month="11"] {
+  background: var(--c);
+}
+
+html[data-month="12"] .swatch[data-month="12"] {
+  background: var(--c);
 }
 
 /* ---------------------------------------------------------------- home */

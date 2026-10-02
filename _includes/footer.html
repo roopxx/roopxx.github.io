@@ -18,4 +18,26 @@
       <time datetime="{{ site.build.datetime }}">{{ site.build.time }}</time>
     </span>
   {%- endif %}
+  {%- comment -%}
+    One dot per month in that month's accent. The current month is filled and
+    named; the script fills in the name because the month is the visitor's.
+  {%- endcomment -%}
+  {%- assign palettes = site.data.themes.palettes -%}
+  {%- assign names = 'jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec'
+    | split: ','
+  -%}
+  <span class="meta palette" aria-label="The accent colour changes each month">
+    <span class="swatches">
+      {%- for m in site.data.themes.months -%}
+        {%- assign i = m.month | minus: 1 -%}
+        <span
+          class="swatch"
+          data-month="{{ m.month }}"
+          style="--light: {{ palettes[m.light].action }}; --dark: {{ palettes[m.dark].action }}"
+          title="{{ names[i] }} · {{ m.light }} / {{ m.dark }}"
+        ></span>
+      {%- endfor -%}
+    </span>
+    <span class="palette-name"></span>
+  </span>
 </footer>

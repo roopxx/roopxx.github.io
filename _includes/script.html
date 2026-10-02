@@ -13,10 +13,21 @@
       );
     }
 
+    var eyes = document.querySelector('.logo-eyes');
+    var paletteName = document.querySelector('.palette-name');
+    var monthNames = 'jan feb mar apr may jun jul aug sep oct nov dec'.split(
+      ' ',
+    );
+
     function set(theme) {
-      root.setAttribute('data-theme', theme);
-      if (!toggle) return;
       var isDark = theme === pair().dark;
+      root.setAttribute('data-theme', theme);
+      root.setAttribute('data-mode', isDark ? 'dark' : 'light');
+      root.setAttribute('data-month', String(pair().month));
+      if (paletteName) {
+        paletteName.textContent = monthNames[pair().month - 1] + ' · ' + theme;
+      }
+      if (!toggle) return;
       toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
       toggle.setAttribute(
         'aria-label',
@@ -31,6 +42,17 @@
         localStorage.setItem('theme:' + p.month, next);
       } catch (e) {}
       set(next);
+      if (eyes) {
+        eyes.classList.remove('blink');
+        void eyes.getBoundingClientRect();
+        eyes.classList.add('blink');
+      }
+    }
+
+    if (eyes) {
+      eyes.addEventListener('animationend', function () {
+        eyes.classList.remove('blink');
+      });
     }
 
     if (toggle) toggle.addEventListener('click', toggleTheme);

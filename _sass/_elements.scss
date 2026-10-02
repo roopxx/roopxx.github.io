@@ -82,14 +82,32 @@ details {
 }
 
 summary {
+  list-style: none;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--muted);
   cursor: pointer;
 }
 
-summary::marker {
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A mono plus that becomes a minus when open. Fixed width, so the text does
+   not shift between states. */
+summary::before {
+  display: inline-block;
+  width: 1.1em;
   color: var(--faint);
+  content: "+";
+}
+
+details[open] > summary::before {
+  content: "–";
+}
+
+summary:hover::before {
+  color: var(--action);
 }
 
 summary:hover {
@@ -109,6 +127,50 @@ details > :not(summary) {
 
 details > :last-child {
   margin-bottom: 0;
+}
+
+/* Long lists: the year is printed once in a left gutter and a hairline marks
+   only where it changes. Entries within a year hang to the right. */
+.by-year > li {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: 0 1rem;
+  padding: 0.9rem 0;
+}
+
+.by-year .year {
+  padding-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.by-year .rows > li {
+  padding: 0 0 0.9rem;
+  border-top: 0;
+}
+
+.by-year .rows > li:last-child {
+  padding-bottom: 0;
+}
+
+@media (max-width: 520px) {
+  .by-year > li {
+    grid-template-columns: 1fr;
+    gap: 0.4rem 0;
+  }
+}
+
+/* Marks an entry from the last seven days. */
+.fresh {
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-left: 0.45em;
+  vertical-align: 0.15em;
+  background: var(--action);
+  border-radius: 50%;
 }
 
 /* What an index shows before it has entries. */

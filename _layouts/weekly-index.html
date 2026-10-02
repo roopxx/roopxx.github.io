@@ -12,21 +12,7 @@ layout: default
 %}
 {% if items.size > 0 %}
   <span class="label">Log</span>
-  <ul class="rows">
-    {% for item in items %}
-      <li>
-        <div class="row-head">
-          <a class="t plain" href="{{ item.url | relative_url }}">
-            {{- item.title -}}
-          </a>
-          <span class="meta">{{ item.date | date: '%b %-d, %Y' }}</span>
-        </div>
-        {% if item.summary %}
-          <div class="row-desc">{{ item.summary }}</div>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
+  {% include rows-by-year.html items=items blurb='summary' %}
 {% else %}
   {% include empty.html text='No entries yet.' %}
 {% endif %}

@@ -56,6 +56,9 @@
         : prefersDark
           ? pair.dark
           : pair.light;
-    document.documentElement.setAttribute('data-theme', theme);
+    var root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    root.setAttribute('data-mode', theme === pair.dark ? 'dark' : 'light');
+    root.setAttribute('data-month', String(month));
   })();
 </script>
